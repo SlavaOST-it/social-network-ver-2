@@ -1,10 +1,13 @@
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
-import thunkMiddleware,  {ThunkAction, ThunkDispatch} from 'redux-thunk'
+import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
+import {profileReducer} from "./reducers/profile-reducer";
+import {appReducer} from "./reducers/app-reducer";
 
 
 const rootReducer = combineReducers({
-
+    app: appReducer,
+    profile: profileReducer,
 })
 
 type ReduxActionType = any
