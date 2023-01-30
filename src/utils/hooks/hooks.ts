@@ -1,4 +1,4 @@
-import {AppDispatchType, RootState} from "../../bll/store";
+import {AppDispatchType, RootState} from "../../bll/store/store";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 
 
