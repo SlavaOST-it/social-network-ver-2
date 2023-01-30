@@ -1,15 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AppThunkType} from "../store";
+import {AppThunkType} from "../store/store";
 import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {AxiosError} from "axios";
-import {authAPI} from "../../api/api";
+import {authAPI} from "../../api/authAPI";
+import {AppStatus} from "../../common/types/commonTypes";
 
-export type RequestStatusType = 'loading' | 'succeeded' | 'failed'
-export type SetAppErrorAT = ReturnType<typeof setAppErrorAC>
-export type SetAppStatusAT = ReturnType<typeof setAppStatusAC>
 
 const initialState = {
-    status: 'loading' as RequestStatusType,
+    status: AppStatus.IDLE,
     error: null as string | null,
     isInitialized: false
 };
@@ -18,7 +16,7 @@ const slice = createSlice({
     name: 'app',
     initialState: initialState,
     reducers: {
-        setAppStatusAC(state, action: PayloadAction<{ status: RequestStatusType }>) {
+        setAppStatusAC(state, action: PayloadAction<{ status: AppStatus }>) {
             state.status = action.payload.status
         },
 
@@ -35,17 +33,19 @@ const slice = createSlice({
 export const appReducer = slice.reducer
 export const {setAppStatusAC, setAppErrorAC, setInitializedAC} = slice.actions
 
+
 // ===== ThunkCreators ===== //
 export const initializeAppTC = (): AppThunkType => async (dispatch) => {
-    dispatch(setAppStatusAC({status: 'loading'}))
+    dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
-        const res = await authAPI.me()
+        await authAPI.me()
         dispatch(setInitializedAC({value: true}))
-        dispatch(setAppStatusAC({status: 'succeeded'}))
+        dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
-        dispatch(setAppStatusAC({status: 'failed'}))
+        dispatch(setAppStatusAC({status: AppStatus.FAILED}))
     } finally {
         dispatch(setInitializedAC({value: true}))
+        dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     }
 }
