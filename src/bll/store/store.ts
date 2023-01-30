@@ -1,8 +1,10 @@
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {profileReducer} from "./reducers/profile-reducer";
-import {appReducer} from "./reducers/app-reducer";
+import {profileReducer} from "../reducers/profile-reducer";
+import {appReducer} from "../reducers/app-reducer";
+import {AppReducerActionType} from "../reducers/reducersTypes/appReducer-types";
+import {UserReducerType} from "../reducers/reducersTypes/profileReducer-types";
 
 
 const rootReducer = combineReducers({
@@ -10,7 +12,9 @@ const rootReducer = combineReducers({
     profile: profileReducer,
 })
 
-type ReduxActionType = any
+type ReduxActionType =
+    AppReducerActionType
+    | UserReducerType
 
 
 export const store = configureStore({
