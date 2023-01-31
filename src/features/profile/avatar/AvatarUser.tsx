@@ -1,13 +1,14 @@
 import React, {FC} from 'react';
-import {useAppSelector} from "../../utils/hooks/hooks";
-import baseAvatarUser from "../../assets/img/icons/avatar_user.png"
+import {useAppSelector} from "../../../utils/hooks/hooks";
+import baseAvatarUser from "../../../assets/img/icons/avatar_user.png"
 
 
 type AvatarUserType = {
+    avatar?: string | null
     onError?: ()=> void
     className?: string
 }
-export const AvatarUser: FC<AvatarUserType>= ({onError, className}) => {
+export const AvatarUser: FC<AvatarUserType>= ({avatar, onError, className}) => {
     const userAvatar = useAppSelector(state => state.profile.profile?.photos.large)
 
     return (
