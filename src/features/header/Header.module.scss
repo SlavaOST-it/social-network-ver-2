@@ -1,0 +1,22 @@
+.header {
+  grid-area: h;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 70px;
+  width: 95%;
+  margin: 0 auto;
+
+  .logo {
+    font-size: 30px;
+
+
+    span {
+      font-size: 36px;
+      color: red;
+    }
+  }
+}
+

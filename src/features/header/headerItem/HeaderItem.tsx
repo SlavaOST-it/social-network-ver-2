@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
-import s from "./HeaderItem.module.css";
-import {AvatarUser} from "../../../common/components/AvatarUser";
+import s from "./HeaderItem.module.scss";
+import {AvatarUser} from "../../profile/avatar/AvatarUser";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -13,6 +13,7 @@ import {PATH} from "../../../utils/routes/routes";
 export const HeaderItem = () => {
     const dispatch = useAppDispatch()
     const userName = useAppSelector(state => state.profile.profile?.fullName)
+
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -32,7 +33,7 @@ export const HeaderItem = () => {
     }
 
     return (
-        <div>
+        <div className={s.headerItem}>
             <div className={s.userName}>{userName}</div>
             <Button
                 id="basic-button"
@@ -41,10 +42,10 @@ export const HeaderItem = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={onClickHandle}
             >
-                <AvatarUser className={s.userAvatar}/>
-                <div>
-                    <img className={s.arrowDown} src={arrowDown} alt={'arrow menu'}/>
-                </div>
+                <AvatarUser type={'my'} className={s.userAvatar}/>
+
+                <img className={s.arrowDown} src={arrowDown} alt={'arrow menu'}/>
+
             </Button>
 
             <Menu
@@ -65,7 +66,6 @@ export const HeaderItem = () => {
                     Logout
                 </MenuItem>
             </Menu>
-
         </div>
     );
 };
