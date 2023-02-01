@@ -1,12 +1,17 @@
 import React, {useEffect} from 'react';
-import './App.css';
+import s from "./App.module.scss"
+
+import {initializeAppTC} from '../bll/reducers/app-reducer';
+
 import {Header} from "../features/header/Header";
 import {Main} from "../features/main/Main";
 import {Footer} from "../features/footer/Footer";
+import {NavBar} from "../features/navBar/NavBar";
+
 import {ErrorSnackbar} from "../common/components/errorSnackBar/ErrorSnackbar";
+import {Preloader} from '../common/components/preloader/Preloader';
+
 import {useAppDispatch, useAppSelector} from "../utils/hooks/hooks";
-import { initializeAppTC } from '../bll/reducers/app-reducer';
-import { Preloader } from '../common/components/preloader/Preloader';
 
 
 function App() {
@@ -22,10 +27,15 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div className={s.container}>
             <Header/>
-            <Main/>
-            <Footer/>
+            <NavBar/>
+
+            <div className={s.content}>
+                <Main/>
+            </div>
+
+            {/*<Footer/>*/}
             <ErrorSnackbar/>
         </div>
     );
