@@ -1,0 +1,47 @@
+.contacts {
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+
+  margin: 10px;
+
+
+  .linksBlock {
+    span {
+      margin: 0 5px 0 0;
+      text-align: center;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .link {
+      padding: 8px 50px;
+      border-radius: 20px 20px 0 0;
+      border: 1px solid lightgrey;
+    }
+
+    .activeLink {
+      padding: 8px 50px;
+      border-radius: 20px 20px 0 0;
+      background-color: lightgrey;
+      border: 1px solid lightgrey;
+    }
+  }
+
+  .description {
+    min-height: 180px;
+
+    border-radius: 10px;
+    background-color: lightgrey;
+
+    .contactsItem {
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+
+      div {
+        margin: 10px 35px;
+      }
+    }
+  }
+}

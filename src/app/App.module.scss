@@ -1,18 +1,15 @@
-.container {
-  display: grid;
-  grid-template-columns: 2fr 10fr;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-          "h h"
-          "n c"
-          "f f";
+.app {
 
-  max-width: 90%;
-  margin: 0 auto;
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 9fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+            "n c";
 
-  background-color: lightgrey;
-  .content {
-    background-color: aqua;
-    border-radius: 10px;
+    width: 85%;
+    max-width: 1200px;
+    min-height: 100%;
+    margin: 0 auto;
   }
 }
