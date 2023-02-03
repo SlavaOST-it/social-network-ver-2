@@ -56,7 +56,9 @@ export const ContactsUser = () => {
             <div className={s.description}>
                 {activeBlock === 'me' &&
                     <div>
-                        {aboutMe?.length ? aboutMe : 'Нет описания'}
+                        {aboutMe?.length
+                            ? <span className={s.spanDescription}>aboutMe</span>
+                            : <span className={s.spanNoDescription}> Нет описания </span>}
                     </div>
                 }
 
@@ -71,7 +73,9 @@ export const ContactsUser = () => {
 
                 {activeBlock === 'job' &&
                     <div>
-                        {aboutJob?.length ? aboutJob : 'Нет описания'}
+                        {aboutJob?.length
+                            ? <span className={s.spanDescription}>aboutJob </span>
+                            : <span className={s.spanNoDescription}>Нет описания </span>}
                     </div>
                 }
             </div>
