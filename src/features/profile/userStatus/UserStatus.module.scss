@@ -1,7 +1,33 @@
 .userStatus {
 
-  .input {
+  .inputBlock {
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .inputStatus{
+      height: 40px;
+      width: 300px;
 
+      font-size: 18px;
+
+      border: 0.1px lightgrey solid;
+      border-radius: 10px;
+      z-index: 2;
+    }
+
+    .error{
+      position: relative;
+      top: -5px;
+      height: 40px;
+      width: 300px;
+
+      background-color: #ff6c6c;
+      border-radius: 0 0 10px 10px;
+
+      text-align: center;
+      align-items: center;
+    }
   }
 
   .span {

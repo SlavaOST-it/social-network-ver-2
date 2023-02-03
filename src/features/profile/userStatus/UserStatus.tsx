@@ -43,12 +43,18 @@ export const UserStatus = () => {
     return (
         <div className={s.userStatus}>
             {editMode
-                ? <div className={s.input}>
-                    <input value={localStatus} onChange={changeStatus} onBlur={activeModeHandler} autoFocus={true}/>
-                    {error && (<span>{error}</span>)}
+                ? <div className={s.inputBlock}>
+                    <input
+                        value={localStatus}
+                        onChange={changeStatus}
+                        onBlur={activeModeHandler}
+                        autoFocus={true}
+                        className={s.inputStatus}
+                    />
+                    {error && (<div className={s.error}>{error}</div>)}
                 </div>
                 : <div className={s.span}>
-                    <span onClick={activeModeHandler}>
+                    <span onDoubleClick={activeModeHandler}>
                         {localStatus.length
                             ? localStatus
                             : <span className={s.baseStatus}>Напиши свой статус</span>}
