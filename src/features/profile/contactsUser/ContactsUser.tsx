@@ -11,23 +11,20 @@ export const ContactsUser = () => {
     const aboutJob = useAppSelector(state => state.profile.profile?.lookingForAJobDescription)
 
     const [activeBlock, setActiveBlock] = useState<ActiveBlockType>('me')
-    // const [activeStyle, setActiveStyle] = useState<ActiveBlockType>('me')
-
 
     const selectBlock = (value: ActiveBlockType) => {
         setActiveBlock(value)
     }
 
-
     const itemRender = [
-        {title: 'gitHub', link: contacts?.github},
-        {title: 'vk', link: contacts?.vk},
-        {title: 'facebook', link: contacts?.facebook},
-        {title: 'instagram', link: contacts?.instagram},
-        {title: 'twitter', link: contacts?.twitter},
-        {title: 'website', link: contacts?.website},
-        {title: 'youtube', link: contacts?.youtube},
-        {title: 'mainLink', link: contacts?.mainLink}
+        {title: 'GitHub', link: contacts?.github},
+        {title: 'VK', link: contacts?.vk},
+        {title: 'Facebook', link: contacts?.facebook},
+        {title: 'Instagram', link: contacts?.instagram},
+        {title: 'Twitter', link: contacts?.twitter},
+        {title: 'Website', link: contacts?.website},
+        {title: 'Youtube', link: contacts?.youtube},
+        {title: 'MainLink', link: contacts?.mainLink}
     ]
 
     return (
@@ -48,7 +45,7 @@ export const ContactsUser = () => {
                 <span onClick={() => selectBlock('job')}
                       className={activeBlock === 'job' ? s.activeLink : s.link}
                 >
-                    О работе
+                    Мои навыки
                 </span>
             </div>
 
