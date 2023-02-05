@@ -6,6 +6,7 @@ import {AvatarUser} from "./avatar/AvatarUser";
 import bgIMG from "../../assets/img/bg5.jpg"
 import {UserStatus} from "./userStatus/UserStatus";
 import {ContactsUser} from "./contactsUser/ContactsUser";
+import {Posts} from "../posts/Posts";
 
 
 export const ProfilePage = () => {
@@ -36,6 +37,10 @@ export const ProfilePage = () => {
 
             <div className={s.aboutUser}>
                 <ContactsUser/>
+            </div>
+
+            <div className={s.postsBlock}>
+                <Posts/>
             </div>
 
         </div>
