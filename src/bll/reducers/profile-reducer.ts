@@ -5,15 +5,24 @@ import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {profileAPI} from "../../api/profileAPI";
 import {setAppErrorAC, setAppStatusAC} from "./app-reducer";
 import {AppStatus, ResultCode} from "../../common/types/commonTypes";
-import {UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
-import {ProfilePageType} from "./reducersTypes/profileReducer-types";
+import {PhotoProfile, UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
+import {PostsDataType, ProfilePageType} from "./reducersTypes/profileReducer-types";
 
 
 const initialState: ProfilePageType = {
-    profile: null,
+    profile: {} as UserProfileType,
+    myAvatar: null,
+
     status: "",
     posts: [
-        {id: 1, message: 'Hello! How are you?'}
+        {id: 1, message: 'React или Angular? Что вы выберите?', likesCount: 1, comments: ""},
+        {id: 2, message: 'Какие книги посоветуете?', likesCount: 3, comments: "JS для детей LOL =)"},
+        {
+            id: 3,
+            message: 'Frontend or Backend? Или же Fullstack?',
+            likesCount: 5,
+            comments: "Не парься, выбери MacDonald's"
+        }
     ]
 }
 
@@ -28,11 +37,19 @@ const slice = createSlice({
         setStatusAC(state, action: PayloadAction<{ status: string }>) {
             state.status = action.payload.status
         },
+
+        setAvatarAC(state, action: PayloadAction<{ myAvatar: string | null }>) {
+            state.myAvatar = action.payload.myAvatar
+        },
+
+        addPostAC(state, action: PayloadAction<{ post: PostsDataType }>) {
+            state.posts.unshift({...action.payload.post})
+        }
     }
 })
 
 export const profileReducer = slice.reducer
-export const {setUserProfileAC, setStatusAC} = slice.actions
+export const {setUserProfileAC, setStatusAC, setAvatarAC, addPostAC} = slice.actions
 
 
 // ===== ThunkCreators ===== //
@@ -41,6 +58,7 @@ export const getProfileTC = (userId: number): AppThunkType => async (dispatch) =
     try {
         const res = await profileAPI.getProfile(userId)
         dispatch(setUserProfileAC({profile: res.data}))
+        dispatch(setAvatarAC({myAvatar: res.data.photos.large}))
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
