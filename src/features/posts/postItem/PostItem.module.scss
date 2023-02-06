@@ -1,0 +1,55 @@
+.postBlock {
+  max-width: 700px;
+  border: 1px black solid;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 15px;
+
+  .headerBlock {
+    display: flex;
+    margin-bottom: 20px;
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+
+      margin: 0 10px;
+    }
+
+    .userName {
+      font-weight: 500;
+    }
+  }
+
+  .textBlock {
+    margin: 0 40px;
+
+    .like {
+      display: flex;
+      align-items: center;
+
+      margin: 10px 0;
+
+      .likeLogo {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+
+  .commentBlock {
+    .avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+
+      margin: 0 10px;
+    }
+
+    .userName {
+      font-weight: 500;
+    }
+  }
+
+}
