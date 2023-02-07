@@ -1,5 +1,5 @@
 import {UserProfileType} from "../../../api/apiConfig/typesAPI/profileAPI-types";
-import {addPostAC, setAvatarAC, setStatusAC, setUserProfileAC} from "../profile-reducer";
+import {addCommentAC, addPostAC, setAvatarAC, setStatusAC, setUserProfileAC} from "../profile-reducer";
 
 // ===== Initial State ===== //
 export type ProfilePageType = {
@@ -13,7 +13,7 @@ export type PostsDataType = {
     id: number,
     message: string,
     likesCount: number,
-    comments: string
+    comment: string
 }
 
 
@@ -22,5 +22,6 @@ type SetUserProfileAT = ReturnType<typeof setUserProfileAC>
 type SetStatusAT = ReturnType<typeof setStatusAC>
 type SetAvatarAT = ReturnType<typeof setAvatarAC>
 type AddPostAT = ReturnType<typeof addPostAC>
+type AddCommentAT = ReturnType<typeof addCommentAC>
 
-export type UserReducerType = SetUserProfileAT | SetStatusAT | SetAvatarAT | AddPostAT
+export type UserReducerType = SetUserProfileAT | SetStatusAT | SetAvatarAT | AddPostAT | AddCommentAT
