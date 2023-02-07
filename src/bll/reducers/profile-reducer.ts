@@ -5,8 +5,8 @@ import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {profileAPI} from "../../api/profileAPI";
 import {setAppErrorAC, setAppStatusAC} from "./app-reducer";
 import {AppStatus, ResultCode} from "../../common/types/commonTypes";
-import {PhotoProfile, UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
-import {PostsDataType, ProfilePageType} from "./reducersTypes/profileReducer-types";
+import {UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
+import {ProfilePageType} from "./reducersTypes/profileReducer-types";
 
 
 const initialState: ProfilePageType = {
