@@ -4,6 +4,7 @@ import {useAppSelector} from "../../../utils/hooks/hooks";
 import {AvatarUser} from "../../profile/avatar/AvatarUser";
 import likeLogo from "../../../assets/img/icons/like.png"
 import userFriendLogo from "../../../assets/img/userAvaPost.jpg"
+import sendButton from "../../../assets/img/icons/send-03-svgrepo-com.svg"
 
 
 export const PostItem = () => {
@@ -33,19 +34,24 @@ export const PostItem = () => {
                     <hr/>
 
                     <div className={s.commentBlock}>
-                        {post.comments &&
+                        {post.comment &&
                             <div>
                                 <div>
                                     <img src={userFriendLogo} alt={"userFriend"} className={s.avatar}/>
                                     <span className={s.userName}>Thomas</span>
                                 </div>
 
-                                <div>{post.comments}</div>
+                                <div>{post.comment}</div>
                             </div>
                         }
+                        <hr/>
 
-                        <input placeholder={"Написать комментарий..."}/>
-                        <button>отправить</button>
+                        <div className={s.addCommentBlock}>
+                            <input className={s.inputAddComment} placeholder={"Написать комментарий..."}/>
+                            <button className={s.sendPostBtn}>
+                                <img src={sendButton} alt={"send post"} />
+                            </button>
+                        </div>
                     </div>
 
                 </div>
