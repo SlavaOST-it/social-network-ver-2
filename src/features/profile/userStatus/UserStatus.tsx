@@ -2,8 +2,9 @@ import React, {ChangeEvent, FC, useEffect, useState} from 'react';
 
 import s from "./UserStatus.module.scss"
 import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
-import {changeStatusTC, getStatusTC} from "../../../bll/reducers/profile-reducer";
+import {changeStatusTC} from "../../../bll/reducers/profile-reducer";
 import pencilLogo from "../../../assets/img/icons/pencil.svg"
+
 
 
 export const UserStatus = () => {

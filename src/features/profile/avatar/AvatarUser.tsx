@@ -4,18 +4,20 @@ import baseAvatarUser from "../../../assets/img/icons/avatar_user.png"
 
 
 type AvatarUserType = {
-    avatar?: string | null
-    onError?: ()=> void
+    type: 'my' | 'user'
+    avatar?: string | null | undefined
+    onError?: () => void
     className?: string
 }
-export const AvatarUser: FC<AvatarUserType>= ({avatar, onError, className}) => {
-    const userAvatar = useAppSelector(state => state.profile.profile?.photos.large)
+export const AvatarUser: FC<AvatarUserType> = ({avatar, type, onError, className}) => {
+    const myAvatar = useAppSelector(state => state.profile.myAvatar)
 
+    const currentAvatar = type === 'user' ? avatar : myAvatar
     return (
         <div>
             <img
                 className={className ? className : ""}
-                src={userAvatar === null ? baseAvatarUser : userAvatar}
+                src={currentAvatar === null ? baseAvatarUser : currentAvatar}
                 onError={onError}
                 alt={'user avatar'}
             />

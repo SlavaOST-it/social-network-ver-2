@@ -5,7 +5,6 @@ import {initializeAppTC} from '../bll/reducers/app-reducer';
 
 import {Header} from "../features/header/Header";
 import {Main} from "../features/main/Main";
-import {Footer} from "../features/footer/Footer";
 import {NavBar} from "../features/navBar/NavBar";
 
 import {ErrorSnackbar} from "../common/components/errorSnackBar/ErrorSnackbar";
@@ -27,11 +26,13 @@ function App() {
     }
 
     return (
-        <div className={s.container}>
+        <div className={s.app}>
             <Header/>
-            <NavBar/>
+            {/*<NavBar/>*/}
 
-            <div className={s.content}>
+
+            <div className={s.container}>
+                <NavBar/>
                 <Main/>
             </div>
 
