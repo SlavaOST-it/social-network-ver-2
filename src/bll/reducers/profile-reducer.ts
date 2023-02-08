@@ -15,13 +15,15 @@ const initialState: ProfilePageType = {
 
     status: "",
     posts: [
-        {id: 1, message: 'React или Angular? Что вы выберите?', likesCount: 1, comment: ""},
-        {id: 2, message: 'Какие книги посоветуете?', likesCount: 3, comment: "JS для детей LOL =)"},
+        {id: 1, message: 'React или Angular? Что вы выберите?', likesCount: 1, comments: []},
+        {id: 2, message: 'Какие книги посоветуете?', likesCount: 3, comments: [{id: 1, text: "JS для детей LOL =)"}]},
         {
             id: 3,
             message: 'Frontend or Backend? Или же Fullstack?',
             likesCount: 5,
-            comment: "Не парься, выбери MacDonald's"
+            comments: [
+                {id:1, text:"Не парься, выбери MacDonald's"}
+            ]
         }
     ]
 }
@@ -47,20 +49,23 @@ const slice = createSlice({
                 id: new Date().getTime(),
                 message: action.payload.postText,
                 likesCount: 0,
-                comment: ""
+                comments: []
             }
 
             state.posts.unshift({...newPost})
         },
 
         addCommentAC(state, action: PayloadAction<{ commentText: string, postId: number }>) {
-            // const comment = state.posts[action.payload.id]
-           state.posts.findIndex(p => p.id === action.payload.postId ? {
-                ...p,
-                comment: action.payload.commentText
-            } : p)
+            const newComment = {
+                id: new Date().getTime(),
+                text: action.payload.commentText
+            }
+            let post = state.posts.find(p => p.id === action.payload.postId)
+            if (post) {
+                post.comments.push({...newComment})
 
-        }
+            }
+        },
     },
 
     // extraReducers: (builder) => {
