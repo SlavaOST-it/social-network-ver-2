@@ -13,7 +13,12 @@ export type PostsDataType = {
     id: number,
     message: string,
     likesCount: number,
-    comment: string
+    comments: CommentType[]
+}
+
+export type CommentType = {
+    id: number,
+    text: string
 }
 
 
