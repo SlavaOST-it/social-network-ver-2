@@ -1,24 +1,39 @@
-import React from 'react';
+import React, {ChangeEvent, useState} from 'react';
+
 import s from "./PostItem.module.scss"
-import {useAppSelector} from "../../../utils/hooks/hooks";
+
+import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
 import {AvatarUser} from "../../profile/avatar/AvatarUser";
+import {addCommentAC} from "../../../bll/reducers/profile-reducer";
+import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
+
 import likeLogo from "../../../assets/img/icons/like.png"
 import userFriendLogo from "../../../assets/img/userAvaPost.jpg"
-import sendButton from "../../../assets/img/icons/send-03-svgrepo-com.svg"
 
 
 export const PostItem = () => {
+    const dispatch = useAppDispatch()
     const postsData = useAppSelector(state => state.profile.posts)
     const userName = useAppSelector(state => state.profile.profile?.fullName)
-    const userAvatar = useAppSelector(state => state.profile.profile?.photos.large)
 
+    const [valueComment, setValueComment] = useState("")
+
+    const changeTextComment = (e: ChangeEvent<HTMLInputElement>) => {
+        setValueComment(e.currentTarget.value)
+    }
+
+    const sendCommentHandler = (valueComment: string, postId: number) => {
+        dispatch(addCommentAC({commentText: valueComment, postId: postId}))
+        setValueComment("")
+    }
 
     return (
         <div>
             {postsData.map(post =>
-                <div className={s.postBlock}>
+                <div key={post.id} className={s.postBlock}>
+
                     <div className={s.headerBlock}>
-                        <AvatarUser type={"my"} avatar={userAvatar} className={s.avatar}/>
+                        <AvatarUser type={"my"} className={s.avatar}/>
                         <span className={s.userName}>{userName}</span>
                     </div>
 
@@ -31,26 +46,41 @@ export const PostItem = () => {
 
                     </div>
 
-                    <hr/>
-
                     <div className={s.commentBlock}>
-                        {post.comment &&
-                            <div>
-                                <div>
-                                    <img src={userFriendLogo} alt={"userFriend"} className={s.avatar}/>
-                                    <span className={s.userName}>Thomas</span>
-                                </div>
+                        {post.comments.length > 0 &&
 
-                                <div>{post.comment}</div>
+                            <div>{post.comments.map(comment =>
+                                <div key={comment.id}>
+                                    {comment.id === 1
+                                        ? <div className={s.userInfo}>
+                                            <img src={userFriendLogo} alt={"avatar"}
+                                                 className={s.avatar}/>
+                                            <span className={s.userName}>Thomas Shelby</span>
+                                        </div>
+                                        : <div className={s.userInfo}>
+                                            <AvatarUser type={"my"} className={s.avatar}/>
+                                            <span className={s.userName}>{userName}</span>
+                                        </div>
+                                    }
+
+                                    {comment.text}
+                                    <hr/>
+
+                                </div>)}
                             </div>
                         }
-                        <hr/>
 
                         <div className={s.addCommentBlock}>
-                            <input className={s.inputAddComment} placeholder={"Написать комментарий..."}/>
-                            <button className={s.sendPostBtn}>
-                                <img src={sendButton} alt={"send post"} />
-                            </button>
+                            <input
+                                key={post.id}
+                                value={valueComment}
+                                className={s.inputAddComment}
+                                placeholder={"Написать комментарий..."}
+                                onChange={changeTextComment}
+                            />
+
+                            <ButtonSend className={s.sendPostBtn}
+                                        callBack={() => sendCommentHandler(valueComment, post.id)}/>
                         </div>
                     </div>
 
@@ -60,3 +90,4 @@ export const PostItem = () => {
         </div>
     );
 };
+
