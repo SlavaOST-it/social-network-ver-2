@@ -1,4 +1,8 @@
-.main{
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+$colorBlue: #959595;
+$commonShadow: 0 0 18px 5px $colorBlue;
+
+
+.main {
+  box-shadow: $commonShadow;
   border-radius: 10px;
 }
