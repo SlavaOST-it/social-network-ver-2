@@ -1,0 +1,13 @@
+.container {
+
+}
+
+:root {
+    --colorBlue: rgb(49, 90, 130);
+    --commonShadow: "";
+    $colorBlue: rgb(49, 90, 130);
+    $commonShadow: 0 0 5px 5px $colorBlue;
+}
+
+
+
