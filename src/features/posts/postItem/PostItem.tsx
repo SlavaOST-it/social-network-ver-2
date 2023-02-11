@@ -79,11 +79,10 @@ export const PostItem = () => {
                                 onChange={changeTextComment}
                             />
 
-                            <ButtonSend className={s.sendPostBtn}
-                                        callBack={() => sendCommentHandler(valueComment, post.id)}/>
+                            <ButtonSend callBack={() => sendCommentHandler(valueComment, post.id)}/>
                         </div>
                     </div>
-
+                    <hr/>
                 </div>
             )}
 

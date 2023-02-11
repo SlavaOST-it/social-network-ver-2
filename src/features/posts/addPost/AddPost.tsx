@@ -18,7 +18,9 @@ export const AddPost = () => {
     }
 
     const addPostHandler = () => {
-        dispatch(addPostAC({postText: valueText}))
+        if(valueText.length){
+            dispatch(addPostAC({postText: valueText}))
+        }
         setValueText("")
     }
 

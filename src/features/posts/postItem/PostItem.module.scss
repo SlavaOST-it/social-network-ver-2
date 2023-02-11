@@ -1,15 +1,5 @@
 .postBlock {
-  //max-width: 700px;
-  //border: 1px black solid;
-  border-radius: 10px;
-  //margin: 10px;
-  //padding: 15px;
-
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
-  //border-radius: 10px;
-
-  margin: 20px;
-  padding: 20px;
+  padding: 8px 20px;
 
   .headerBlock {
     display: flex;
@@ -46,12 +36,11 @@
   }
 
   .commentBlock {
-
-
-    background-color: lightgrey;
+    background-color: #a8b9ca;
     border-radius: 10px;
     padding: 10px;
 
+    margin: 0 50px;
     .userInfo {
       display: flex;
       align-items: center;
@@ -80,19 +69,6 @@
         height: 25px;
         width: 350px;
       }
-
-      .sendPostBtn {
-        cursor: pointer;
-        border: none;
-        background-color: lightgrey;
-
-        img {
-          width: 20px;
-          height: 20px;
-          opacity: 0.8;
-        }
-      }
     }
   }
-
 }

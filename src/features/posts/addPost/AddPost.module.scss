@@ -1,6 +1,8 @@
+$commonShadow: #a7b8c9;
+
 .addPost {
   border-radius: 10px;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 5px $commonShadow;
 
   margin: 20px;
   padding: 1px;
@@ -9,7 +11,7 @@
     display: flex;
     align-items: center;
 
-    background-color: lightgrey;
+    background-color: $commonShadow;
 
     padding: 5px;
     margin: 20px;
@@ -45,6 +47,9 @@
     }
 
     .sendBtn {
+      img {
+        background-color: $commonShadow;
+      }
     }
   }
 }
