@@ -4,16 +4,17 @@ import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 import {AvatarUser} from "./avatar/AvatarUser";
 
 import bgIMG from "../../assets/img/bg5.jpg"
+
+import {Posts} from "../posts/Posts";
 import {UserStatus} from "./userStatus/UserStatus";
 import {ContactsUser} from "./contactsUser/ContactsUser";
-import {Posts} from "../posts/Posts";
 
 
 export const ProfilePage = () => {
-    const dispatch = useAppDispatch()
+
     const userData = useAppSelector(state => state.profile.profile)
+    const myId = useAppSelector(state => state.profile.myId)
     const avatar = useAppSelector(state => state.profile.profile?.photos.large)
-    const status = useAppSelector(state => state.profile.status)
 
 
     return (
@@ -32,7 +33,9 @@ export const ProfilePage = () => {
                     </div>
                 </div>
 
-                <button className={s.editProfileBtn}> Редактировать профиль</button>
+                {myId === userData?.userId &&
+                    <button className={s.editProfileBtn}> Редактировать профиль</button>
+                }
             </div>
 
             <div className={s.aboutUser}>
