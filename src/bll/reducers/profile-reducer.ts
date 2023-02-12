@@ -11,6 +11,7 @@ import {ProfilePageType} from "./reducersTypes/profileReducer-types";
 
 const initialState: ProfilePageType = {
     profile: {} as UserProfileType,
+    myId: 0,
     myAvatar: null,
 
     status: "",
@@ -36,12 +37,16 @@ const slice = createSlice({
             state.profile = action.payload.profile
         },
 
-        setStatusAC(state, action: PayloadAction<{ status: string }>) {
+        setStatusAC(state, action: PayloadAction<{ status: string | null}>) {
             state.status = action.payload.status
         },
 
         setAvatarAC(state, action: PayloadAction<{ myAvatar: string | null }>) {
             state.myAvatar = action.payload.myAvatar
+        },
+
+        setMyIdAC(state, action: PayloadAction<{ myId: number}>) {
+            state.myId = action.payload.myId
         },
 
         addPostAC(state, action: PayloadAction<{ postText: string }>) {
@@ -66,17 +71,11 @@ const slice = createSlice({
 
             }
         },
-    },
-
-    // extraReducers: (builder) => {
-    //     builder.addCase(addPostAC, (state, action) => {
-    //         state[action.payload.posts.id] = {}
-    //     })
-    // }
+    }
 })
 
 export const profileReducer = slice.reducer
-export const {setUserProfileAC, setStatusAC, setAvatarAC, addPostAC, addCommentAC} = slice.actions
+export const {setUserProfileAC, setStatusAC, setAvatarAC, addPostAC, addCommentAC, setMyIdAC} = slice.actions
 
 
 // ===== ThunkCreators ===== //
@@ -86,6 +85,7 @@ export const getProfileTC = (userId: number): AppThunkType => async (dispatch) =
         const res = await profileAPI.getProfile(userId)
         dispatch(setUserProfileAC({profile: res.data}))
         dispatch(setAvatarAC({myAvatar: res.data.photos.large}))
+        dispatch(getStatusTC(userId))
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
@@ -98,7 +98,6 @@ export const getStatusTC = (userId: number): AppThunkType => async (dispatch) =>
     try {
         const res = await profileAPI.getStatusProfile(userId)
         dispatch(setStatusAC({status: res.data}))                                      // !!!!!! ВОЗМОЖНО ЗДЕСЬ ПРОБЛЕМА
-        // errorUtilsSocialNetwork(res.data)
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
