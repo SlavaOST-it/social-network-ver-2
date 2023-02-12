@@ -1,6 +1,6 @@
 export const PATH = {
     login: '/login',
-    profile: '/profile/:userId?',
+    profile: '/profile',
     friends: '/friends',
     users: '/users',
     messages: '/messages',
