@@ -4,7 +4,7 @@ import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {AxiosError} from "axios";
 import {authAPI} from "../../api/authAPI";
 import {AppStatus} from "../../common/types/commonTypes";
-import {getProfileTC, getStatusTC} from "./profile-reducer";
+import {getProfileTC, setMyIdAC} from "./profile-reducer";
 
 
 const initialState = {
@@ -41,7 +41,7 @@ export const initializeAppTC = (): AppThunkType => async (dispatch) => {
     try {
         const res = await authAPI.me()
         await dispatch(getProfileTC(res.data.data.id))
-        await dispatch(getStatusTC(res.data.data.id))
+        await dispatch(setMyIdAC({myId: res.data.data.id}))
         await dispatch(setInitializedAC({value: true}))
         await dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
