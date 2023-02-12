@@ -3,8 +3,8 @@ import {FollowResponseType, UsersResponseType} from "./apiConfig/typesAPI/usersA
 
 
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10){
-        return instance.get<UsersResponseType>(`users?page=${currentPage}&count=${pageSize}`)
+    getUsers(currentPage=1, pageSize: number, isFriend?: boolean) {
+        return instance.get<UsersResponseType>(`users?page=${currentPage}&count=${pageSize}&friend=${isFriend}`)
     },
 
     follow(userId: number) {
