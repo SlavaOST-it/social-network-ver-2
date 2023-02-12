@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 
 import s from "./UserStatus.module.scss"
 import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
@@ -9,8 +9,11 @@ import pencilLogo from "../../../assets/img/icons/pencil.svg"
 
 export const UserStatus = () => {
     const dispatch = useAppDispatch()
-    const status = useAppSelector(state => state.profile.status)
+    const statusUser = useAppSelector(state => state.profile.status)
+    const myId = useAppSelector(state => state.profile.myId)
+    const userId = useAppSelector(state => state.profile.profile?.userId)
 
+    const status = statusUser ? statusUser : ""
     const [localStatus, setLocalStatus] = useState(status)
     const [editMode, setEditMode] = useState(false)
     const [error, setError] = useState<string | null>(null)
@@ -54,17 +57,15 @@ export const UserStatus = () => {
                     />
                     {error && (<div className={s.error}>{error}</div>)}
                 </div>
+
                 : <div className={s.span}>
-                    <span onDoubleClick={activeModeHandler}>
-                        {localStatus.length
-                            ? localStatus
-                            : <span className={s.baseStatus}>Напиши свой статус</span>}
-                        <img src={pencilLogo} alt={'edit status'}/>
+                    <span>
+                        {localStatus.length > 0 && localStatus}
+                        {(localStatus.length === 0 &&  myId === userId)  && <span className={s.baseStatus}>Добавить статус...</span>}
+                        {myId === userId && <img src={pencilLogo} onDoubleClick={activeModeHandler} alt={'edit status'}/>}
                     </span>
                 </div>
             }
-
-
         </div>
     );
 };
