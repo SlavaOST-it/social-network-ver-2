@@ -33,7 +33,7 @@ type SetCurrentPageAT = ReturnType<typeof setCurrentPageAC>
 type  FollowAT = ReturnType<typeof followAC>
 
 
-export type UsersReducerActionType =
+export type UsersReducerActionTypes =
     SetUsersAT
     | SetUsersTotalCountAT
     | SetCurrentPageAT

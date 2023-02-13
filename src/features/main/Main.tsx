@@ -6,12 +6,12 @@ import s from "./Main.module.scss"
 import {PATH} from "../../utils/routes/routes";
 
 import {Login} from "../login/Login";
-import {ProfilePage} from "../profile/ProfilePage";
-import {DialogsPage} from "../messages/DialogsPage";
-import {Page404} from "../../common/components/page404/Page404";
 import {UsersPage} from "../users/UsersPage";
-import {PageConstruction} from "../../common/components/pageConstruction/PageConstruction";
+import {ProfilePage} from "../profile/ProfilePage";
+import {DialogsPage} from "../dialogs/DialogsPage";
 import {FriendsPage} from "../friends/FriendsPage";
+import {Page404} from "../../common/components/page404/Page404";
+import {PageConstruction} from "../../common/components/pageConstruction/PageConstruction";
 
 
 export const Main = () => {
@@ -21,7 +21,7 @@ export const Main = () => {
                 <Route path={'/'} element={<Navigate to={PATH.login}/>}/>
                 <Route path={PATH.login} element={<Login/>}/>
                 <Route path={PATH.profile} element={<ProfilePage/>}/>
-                <Route path={PATH.messages} element={<DialogsPage/>}/>
+                <Route path={PATH.dialogs} element={<DialogsPage/>}/>
                 <Route path={PATH.friends} element={<FriendsPage/>}/>
                 <Route path={PATH.users} element={<UsersPage/>}/>
                 <Route path={PATH.music} element={<PageConstruction/>}/>

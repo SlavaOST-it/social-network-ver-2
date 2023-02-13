@@ -31,4 +31,4 @@ type AddPostAT = ReturnType<typeof addPostAC>
 type AddCommentAT = ReturnType<typeof addCommentAC>
 type SetMyIdAT = ReturnType<typeof setMyIdAC>
 
-export type ProfileReducerActionType = SetUserProfileAT | SetStatusAT | SetAvatarAT | AddPostAT | AddCommentAT | SetMyIdAT
+export type ProfileReducerActionTypes = SetUserProfileAT | SetStatusAT | SetAvatarAT | AddPostAT | AddCommentAT | SetMyIdAT

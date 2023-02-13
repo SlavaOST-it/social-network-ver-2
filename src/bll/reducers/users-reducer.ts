@@ -39,11 +39,18 @@ const slice = createSlice({
                 user.followed = true
             }
         },
+
+        unFollowAC(state, action: PayloadAction<{ userId: number }>) {
+            let user = state.items.find(u => u.id === action.payload.userId)
+            if (user) {
+                user.followed = false
+            }
+        },
     }
 })
 
 export const usersReducer = slice.reducer
-export const {setUsersAC, setUsersTotalCountAC, setCurrentPageAC, followAC} = slice.actions
+export const {setUsersAC, setUsersTotalCountAC, setCurrentPageAC, followAC, unFollowAC} = slice.actions
 
 
 // ===== ThunkCreators ===== //
@@ -74,6 +81,22 @@ export const followTC = (userId: number): AppThunkType => async (dispatch) => {
         const res = await usersAPI.follow(userId)
         if (res.data.resultCode === 0) {
             dispatch(followAC({userId}))
+        }
+
+        dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+    } catch (e) {
+        baseErrorHandler(e as Error | AxiosError, dispatch)
+        dispatch(setAppStatusAC({status: AppStatus.FAILED}))
+    }
+}
+
+export const unFollowTC = (userId: number): AppThunkType => async (dispatch) => {
+    dispatch(setAppStatusAC({status: AppStatus.LOADING}))
+
+    try {
+        const res = await usersAPI.follow(userId)
+        if (res.data.resultCode === 0) {
+            dispatch(unFollowAC({userId}))
         }
 
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))

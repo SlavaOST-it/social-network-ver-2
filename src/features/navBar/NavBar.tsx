@@ -17,7 +17,7 @@ export const NavBar = () => {
     }
 
     const menuLinks = [
-        {id: 2, path: PATH.messages, nameLink: "Сообщения"},
+        {id: 2, path: PATH.dialogs, nameLink: "Сообщения"},
         {id: 3, path: PATH.friends, nameLink: "Мои друзья"},
         {id: 4, path: PATH.users, nameLink: "Пользователи"},
         {id: 5, path: PATH.music, nameLink: "Музыка"},

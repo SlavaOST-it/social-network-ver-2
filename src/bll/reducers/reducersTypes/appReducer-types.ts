@@ -4,4 +4,4 @@ export type SetAppErrorAT = ReturnType<typeof setAppErrorAC>
 export type SetAppStatusAT = ReturnType<typeof setAppStatusAC>
 export type SetInitializedAT = ReturnType<typeof setInitializedAC>
 
-export type AppReducerActionType = SetAppErrorAT | SetAppStatusAT | SetInitializedAT
+export type AppReducerActionTypes = SetAppErrorAT | SetAppStatusAT | SetInitializedAT
