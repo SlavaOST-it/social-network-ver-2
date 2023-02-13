@@ -1,24 +1,30 @@
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
-import {profileReducer} from "../reducers/profile-reducer";
+
 import {appReducer} from "../reducers/app-reducer";
-import {AppReducerActionType} from "../reducers/reducersTypes/appReducer-types";
-import {ProfileReducerActionType} from "../reducers/reducersTypes/profileReducer-types";
+import {profileReducer} from "../reducers/profile-reducer";
 import {usersReducer} from "../reducers/users-reducer";
-import {UsersReducerActionType} from "../reducers/reducersTypes/usersReducer-types";
+import {dialogsReducer} from "../reducers/dialogs-reducer";
+
+import {AppReducerActionTypes} from "../reducers/reducersTypes/appReducer-types";
+import {ProfileReducerActionTypes} from "../reducers/reducersTypes/profileReducer-types";
+import {UsersReducerActionTypes} from "../reducers/reducersTypes/usersReducer-types";
+import {DialogsReducerActionTypes} from "../reducers/reducersTypes/dialogsReducer-types";
 
 
 const rootReducer = combineReducers({
     app: appReducer,
     profile: profileReducer,
     users: usersReducer,
+    dialogs: dialogsReducer,
 })
 
 type ReduxActionType =
-    AppReducerActionType
-    | ProfileReducerActionType
-    | UsersReducerActionType
+    AppReducerActionTypes
+    | ProfileReducerActionTypes
+    | UsersReducerActionTypes
+    | DialogsReducerActionTypes
 
 
 export const store = configureStore({
@@ -26,7 +32,7 @@ export const store = configureStore({
     middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleware)
 })
 
-export type AppRootStateType = ReturnType<typeof rootReducer>
+// export type AppRootStateType = ReturnType<typeof rootReducer>
 export type RootState = ReturnType<typeof store.getState>
 
 // ===== Типизация Dispatch для Actions и Thunks ===== //
