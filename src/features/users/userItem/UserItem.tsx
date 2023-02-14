@@ -49,8 +49,6 @@ export const UserItem: FC<UserItemType> = ({user, follow, unfollow, followingDis
             >
                 подписаться
             </button>
-
-            {/*<hr/>*/}
         </div>
     );
 };

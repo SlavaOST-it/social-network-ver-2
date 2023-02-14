@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 import s from "./FriendsPage.module.scss"
 
 import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
-import {getUsersThunkCreator, setCurrentPageAC} from "../../bll/reducers/users-reducer";
+import {getUsersThunkCreator, setCurrentPageAC, unFollowTC} from "../../bll/reducers/users-reducer";
 import {UserItem} from "../users/userItem/UserItem";
 import {BasicPagination} from "../../common/components/pagination/BasicPagination";
 
@@ -17,7 +17,7 @@ export const FriendsPage = () => {
     const totalUsersCount = useAppSelector(state => state.users.totalUsersCount)
     const followingDisable = useAppSelector(state => state.users.followingDisable)
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(setCurrentPageAC({currentPage: 1}))
     }, [])
 
@@ -29,8 +29,8 @@ export const FriendsPage = () => {
         dispatch(setCurrentPageAC({currentPage}))
     }
 
-    const unFollowHandler = () => {
-
+    const unFollowHandler = (userId: number) => {
+        dispatch(unFollowTC(userId))
     }
 
     return (
@@ -40,7 +40,8 @@ export const FriendsPage = () => {
                     <UserItem
                         key={users.id}
                         user={users}
-                        follow={()=>{}}
+                        follow={() => {
+                        }}
                         unfollow={unFollowHandler}
                         followingDisable={followingDisable}/>
                 )}
