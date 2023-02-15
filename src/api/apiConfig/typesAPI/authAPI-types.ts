@@ -18,7 +18,8 @@ export type MeResponseType = {
 export type LoginRequestType = {
     email: string,
     password: string,
-    rememberMe: boolean
+    rememberMe?: boolean
+    captcha?: string
 }
 
 export type LoginResponseType = {

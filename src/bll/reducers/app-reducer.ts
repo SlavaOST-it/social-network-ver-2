@@ -5,6 +5,7 @@ import {AxiosError} from "axios";
 import {authAPI} from "../../api/authAPI";
 import {AppStatus} from "../../common/types/commonTypes";
 import {getProfileTC, setMyIdAC} from "./profile-reducer";
+import {loggedInAC} from "./auth-reducer";
 
 
 const initialState = {
@@ -40,10 +41,15 @@ export const initializeAppTC = (): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await authAPI.me()
-        await dispatch(getProfileTC(res.data.data.id))
-        await dispatch(setMyIdAC({myId: res.data.data.id}))
-        await dispatch(setInitializedAC({value: true}))
-        await dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+        if(res.data.resultCode === 0){
+            await dispatch(setMyIdAC({myId: res.data.data.id}))
+            await dispatch(getProfileTC(res.data.data.id))
+            await dispatch(loggedInAC({loggedIn: true}))
+            await dispatch(setInitializedAC({value: true}))
+
+            await dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+        }
+
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
         dispatch(setAppStatusAC({status: AppStatus.FAILED}))
