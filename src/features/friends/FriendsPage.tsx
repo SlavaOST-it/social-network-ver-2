@@ -6,6 +6,8 @@ import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 import {getUsersThunkCreator, setCurrentPageAC, unFollowTC} from "../../bll/reducers/users-reducer";
 import {UserItem} from "../users/userItem/UserItem";
 import {BasicPagination} from "../../common/components/pagination/BasicPagination";
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../utils/routes/routes";
 
 
 export const FriendsPage = () => {
@@ -16,6 +18,9 @@ export const FriendsPage = () => {
     const currentPage = useAppSelector(state => state.users.currentPage)
     const totalUsersCount = useAppSelector(state => state.users.totalUsersCount)
     const followingDisable = useAppSelector(state => state.users.followingDisable)
+
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
+
 
     useEffect(() => {
         dispatch(setCurrentPageAC({currentPage: 1}))
@@ -33,6 +38,9 @@ export const FriendsPage = () => {
         dispatch(unFollowTC(userId))
     }
 
+    if (!loggedIn) {
+        return <Navigate to={PATH.login}/>
+    }
     return (
         <div>
             <div>

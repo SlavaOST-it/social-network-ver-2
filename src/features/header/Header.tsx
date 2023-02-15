@@ -1,9 +1,11 @@
 import React from 'react';
 import s from './Header.module.scss'
 import {HeaderItem} from "./headerItem/HeaderItem";
+import {useAppSelector} from "../../utils/hooks/hooks";
 
 
 export const Header = () => {
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
 
     return (
         <div className={s.header}>
@@ -11,8 +13,7 @@ export const Header = () => {
                 <span>Ⓢ</span>ⓞⓒⓘⓐⓛ <span>Ⓝ</span>ⓔⓣⓦⓞⓡⓚ
             </div>
 
-            <HeaderItem/>
-
+            {loggedIn && <HeaderItem/>}
         </div>
     );
 };

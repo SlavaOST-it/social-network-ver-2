@@ -8,13 +8,20 @@ import bgIMG from "../../assets/img/bg5.jpg"
 import {Posts} from "../posts/Posts";
 import {UserStatus} from "./userStatus/UserStatus";
 import {ContactsUser} from "./contactsUser/ContactsUser";
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../utils/routes/routes";
 
 
 export const ProfilePage = () => {
 
-    const userData = useAppSelector(state => state.profile.profile)
     const myId = useAppSelector(state => state.profile.myId)
-    const avatar = useAppSelector(state => state.profile.profile?.photos.large)
+    const userData = useAppSelector(state => state.profile.profile)
+
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
+
+    if (!loggedIn) {
+        return <Navigate to={PATH.login}/>
+    }
 
 
     return (
@@ -25,7 +32,7 @@ export const ProfilePage = () => {
 
             <div className={s.content}>
                 <div className={s.infoProfile}>
-                    <AvatarUser type={'user'} avatar={avatar} className={s.avatar}/>
+                    <AvatarUser type={'my'} className={s.avatar}/>
 
                     <div className={s.nameAndStatus}>
                         <p className={s.userName}>{userData?.fullName}</p>

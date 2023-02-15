@@ -6,6 +6,8 @@ import {BasicPagination} from "../../common/components/pagination/BasicPaginatio
 import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 import {UserItem} from "./userItem/UserItem";
 import {followTC, getUsersThunkCreator, setCurrentPageAC} from "../../bll/reducers/users-reducer";
+import {Navigate} from "react-router-dom";
+import {PATH} from "../../utils/routes/routes";
 
 
 export const UsersPage = () => {
@@ -16,6 +18,8 @@ export const UsersPage = () => {
     const currentPage = useAppSelector(state => state.users.currentPage)
     const totalUsersCount = useAppSelector(state => state.users.totalUsersCount)
     const followingDisable = useAppSelector(state => state.users.followingDisable)
+
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
 
     useEffect(()=>{
         dispatch(setCurrentPageAC({currentPage: 1}))
@@ -33,7 +37,9 @@ export const UsersPage = () => {
         dispatch(followTC(userId))
     }
 
-
+    if (!loggedIn) {
+        return <Navigate to={PATH.login}/>
+    }
     return (
         <div className={s.usersPage}>
             <div>

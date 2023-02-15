@@ -10,6 +10,8 @@ import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 
 export const NavBar = () => {
     const dispatch = useAppDispatch()
+
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
     const myId = useAppSelector(state => state.profile.myId)
 
     const changeMyProfilePage = (myId: number) => {
@@ -27,27 +29,29 @@ export const NavBar = () => {
 
     return (
         <nav className={s.navbar}>
-            <ul>
-                <li>
-                    <NavLink
-                        to={PATH.profile}
-                        onClick={()=>changeMyProfilePage(myId)}
-                        className={({isActive}) => isActive ? s.activeLink : s.link}
-                    >
-                        Моя страница
-                    </NavLink>
-                </li>
-
-                {menuLinks.map(el =>
-                    <li key={el.id}>
+            {loggedIn &&
+                <ul>
+                    <li>
                         <NavLink
-                            id={el.path}
-                            to={el.path}
+                            to={PATH.profile}
+                            onClick={() => changeMyProfilePage(myId)}
                             className={({isActive}) => isActive ? s.activeLink : s.link}
-                        >{el.nameLink}</NavLink>
+                        >
+                            Моя страница
+                        </NavLink>
                     </li>
-                )}
-            </ul>
+
+                    {menuLinks.map(el =>
+                        <li key={el.id}>
+                            <NavLink
+                                id={el.path}
+                                to={el.path}
+                                className={({isActive}) => isActive ? s.activeLink : s.link}
+                            >{el.nameLink}</NavLink>
+                        </li>
+                    )}
+                </ul>
+            }
         </nav>
     );
 };
