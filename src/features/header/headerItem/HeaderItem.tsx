@@ -8,6 +8,7 @@ import MenuItem from "@mui/material/MenuItem";
 import arrowDown from "../../../assets/img/icons/down-arrow-svgrepo-com.svg"
 import {NavLink} from "react-router-dom";
 import {PATH} from "../../../utils/routes/routes";
+import {logOutTC} from "../../../bll/reducers/auth-reducer";
 
 
 export const HeaderItem = () => {
@@ -29,7 +30,7 @@ export const HeaderItem = () => {
 
     const logOutHandle = () => {
         onCloseHandle()
-        // dispatch(logoutThunkCreator())
+       dispatch(logOutTC())
     }
 
     return (
