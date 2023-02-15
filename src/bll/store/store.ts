@@ -11,10 +11,13 @@ import {AppReducerActionTypes} from "../reducers/reducersTypes/appReducer-types"
 import {ProfileReducerActionTypes} from "../reducers/reducersTypes/profileReducer-types";
 import {UsersReducerActionTypes} from "../reducers/reducersTypes/usersReducer-types";
 import {DialogsReducerActionTypes} from "../reducers/reducersTypes/dialogsReducer-types";
+import {AuthReducerActionTypes} from "../reducers/reducersTypes/authReducer-types";
+import {authReducer} from "../reducers/auth-reducer";
 
 
 const rootReducer = combineReducers({
     app: appReducer,
+    auth: authReducer,
     profile: profileReducer,
     users: usersReducer,
     dialogs: dialogsReducer,
@@ -22,6 +25,7 @@ const rootReducer = combineReducers({
 
 type ReduxActionType =
     AppReducerActionTypes
+    | AuthReducerActionTypes
     | ProfileReducerActionTypes
     | UsersReducerActionTypes
     | DialogsReducerActionTypes
