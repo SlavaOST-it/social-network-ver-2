@@ -3,20 +3,23 @@ import s from "./UserItem.module.scss"
 import basicAvatar from "../../../assets/img/icons/avatar_user.png"
 import {UserType} from "../../../bll/reducers/reducersTypes/usersReducer-types";
 import {NavLink} from "react-router-dom";
-import {useAppDispatch} from "../../../utils/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
 import {getProfileTC} from "../../../bll/reducers/profile-reducer";
 import {PATH} from "../../../utils/routes/routes";
+import {commonDisabled} from "../../../utils/disabledOnBoot/disabledOnBoot";
 
 
 type UserItemType = {
     user: UserType
-    follow: (userId: number) => void,
-    unfollow: (userId: number) => void,
+    changeFollowHandler: (userId: number) => void,
+    type: 'users' | 'friends'
     followingDisable: number []
 }
 
-export const UserItem: FC<UserItemType> = ({user, follow, unfollow, followingDisable}) => {
+export const UserItem: FC<UserItemType> = ({user, changeFollowHandler, type, followingDisable}) => {
     const dispatch = useAppDispatch()
+
+    const appStatus = useAppSelector(state => state.app.status)
 
     const currentUser = (userId: number) => {
         dispatch(getProfileTC(userId))
@@ -24,7 +27,6 @@ export const UserItem: FC<UserItemType> = ({user, follow, unfollow, followingDis
 
     return (
         <div className={s.userItem}>
-
             <NavLink
                 to={PATH.profile}
                 onClick={() => currentUser(user.id)}
@@ -42,12 +44,16 @@ export const UserItem: FC<UserItemType> = ({user, follow, unfollow, followingDis
                 </div>
             </NavLink>
 
-
             <button
-                onClick={() => follow(user.id)}
+                onClick={() => {
+                    changeFollowHandler(user.id)
+                }}
+                disabled={commonDisabled(appStatus)}
                 className={s.followButton}
             >
-                подписаться
+                {type === 'users'
+                    ? <span>подписаться</span>
+                    : <span>отписаться</span>}
             </button>
         </div>
     );

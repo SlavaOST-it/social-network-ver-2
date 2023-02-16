@@ -1,8 +1,9 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import s from "./BasicPagination.module.scss"
 
 
 type BasicPaginationType = {
+    type: 'users' | 'friends'
     totalItemsCount: number,
     pageSize: number,
     onPageChanges: (pageNumber: number) => void,
@@ -10,6 +11,7 @@ type BasicPaginationType = {
     portionSize: number
 }
 export const BasicPagination: FC<BasicPaginationType> = ({
+                                                             type,
                                                              totalItemsCount,
                                                              pageSize,
                                                              onPageChanges,
@@ -26,6 +28,10 @@ export const BasicPagination: FC<BasicPaginationType> = ({
         const portionCount = Math.ceil(pagesCount / portionSize);
 
         const [portionNumber, setPortionNumber] = useState(1);
+
+        useEffect(()=>{
+            setPortionNumber(1)
+        }, [type])
 
         const leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
         const rightPortionPageNumber = (portionNumber * portionSize);
