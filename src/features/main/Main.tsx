@@ -6,10 +6,9 @@ import s from "./Main.module.scss"
 import {PATH} from "../../utils/routes/routes";
 
 import {Login} from "../login/Login";
-import {UsersPage} from "../users/UsersPage";
 import {ProfilePage} from "../profile/ProfilePage";
 import {DialogsPage} from "../dialogs/DialogsPage";
-import {FriendsPage} from "../friends/FriendsPage";
+import {UsersPage} from '../users/UsersPage';
 import {Page404} from "../../common/components/page404/Page404";
 import {PageConstruction} from "../../common/components/pageConstruction/PageConstruction";
 
@@ -22,12 +21,13 @@ export const Main = () => {
                 <Route path={PATH.login} element={<Login/>}/>
                 <Route path={PATH.profile} element={<ProfilePage/>}/>
                 <Route path={PATH.dialogs} element={<DialogsPage/>}/>
-                <Route path={PATH.friends} element={<FriendsPage/>}/>
-                <Route path={PATH.users} element={<UsersPage/>}/>
+                <Route path={PATH.friends} element={<UsersPage type={'friends'}/>}/>
+                <Route path={PATH.users} element={<UsersPage type={'users'}/>}/>
                 <Route path={PATH.music} element={<PageConstruction/>}/>
                 <Route path={PATH.news} element={<PageConstruction/>}/>
                 <Route path={PATH.settings} element={<PageConstruction/>}/>
-                <Route path={"/*"} element={<Page404/>}/>
+                <Route path={PATH.page404} element={<Page404/>}/>
+                <Route path={"*"} element={<Navigate to={PATH.page404}/>}/>
             </Routes>
         </div>
     );
