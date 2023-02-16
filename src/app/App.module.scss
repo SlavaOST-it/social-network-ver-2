@@ -1,15 +1,13 @@
 .app {
-
-  .container {
-    display: grid;
-    grid-template-columns: 2fr 9fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
+  display: grid;
+  grid-template-columns: 2fr 8fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+            "h h"
             "n c";
 
-    width: 85%;
-    max-width: 1200px;
-    min-height: 100%;
-    margin: 0 auto;
-  }
+  min-height: 100%;
+  margin: 0 auto;
+
+
 }

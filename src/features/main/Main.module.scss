@@ -1,4 +1,4 @@
-$colorBlue: #959595;
+$colorBlue: #113b62;
 $commonShadow: 0 0 18px 5px $colorBlue;
 
 
@@ -7,4 +7,7 @@ $commonShadow: 0 0 18px 5px $colorBlue;
   border-radius: 10px;
 
   margin-bottom: 20px;
+
+  max-width: 900px;
+  background-color: white;
 }
