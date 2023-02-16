@@ -74,13 +74,14 @@ export const getUsersThunkCreator = (isFriend?: boolean): AppThunkType => async 
     }
 }
 
+
 export const followTC = (userId: number): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
-
     try {
         const res = await usersAPI.follow(userId)
         if (res.data.resultCode === 0) {
             dispatch(followAC({userId}))
+            dispatch(getUsersThunkCreator(false))
         }
 
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
@@ -90,13 +91,14 @@ export const followTC = (userId: number): AppThunkType => async (dispatch) => {
     }
 }
 
+
 export const unFollowTC = (userId: number): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
-
     try {
-        const res = await usersAPI.follow(userId)
+        const res = await usersAPI.unfollow(userId)
         if (res.data.resultCode === 0) {
             dispatch(unFollowAC({userId}))
+            dispatch(getUsersThunkCreator(true))
         }
 
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))

@@ -9,15 +9,14 @@ type AvatarUserType = {
     onError?: () => void
     className?: string
 }
-export const AvatarUser: FC<AvatarUserType> = ({avatar, type, onError, className}) => {
-    const myAvatar = useAppSelector(state => state.profile.myAvatar)
+export const AvatarUser: FC<AvatarUserType> = ({type, onError, className}) => {
+    const avatar = useAppSelector(state => state.profile.profile?.photos.large)
 
-    const currentAvatar = type === 'user' ? avatar : myAvatar
     return (
         <div>
             <img
                 className={className ? className : ""}
-                src={currentAvatar === null ? baseAvatarUser : currentAvatar}
+                src={avatar === null ? baseAvatarUser : avatar}
                 onError={onError}
                 alt={'user avatar'}
             />

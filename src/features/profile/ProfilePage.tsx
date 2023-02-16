@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./ProfilePage.module.scss"
-import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
+import {useAppSelector} from "../../utils/hooks/hooks";
 import {AvatarUser} from "./avatar/AvatarUser";
 
 import bgIMG from "../../assets/img/bg5.jpg"
@@ -22,7 +22,6 @@ export const ProfilePage = () => {
     if (!loggedIn) {
         return <Navigate to={PATH.login}/>
     }
-
 
     return (
         <div className={s.profilePage}>

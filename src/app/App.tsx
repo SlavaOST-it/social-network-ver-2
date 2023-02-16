@@ -11,11 +11,14 @@ import {ErrorSnackbar} from "../common/components/errorSnackBar/ErrorSnackbar";
 import {Preloader} from '../common/components/preloader/Preloader';
 
 import {useAppDispatch, useAppSelector} from "../utils/hooks/hooks";
+import {Login} from "../features/login/Login";
+import Preloader2 from "../common/components/preloader/Preloader2";
 
 
 function App() {
     const dispatch = useAppDispatch()
     const isInitialized = useAppSelector(state => state.app.isInitialized)
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
 
     useEffect(() => {
         dispatch(initializeAppTC())
@@ -25,18 +28,17 @@ function App() {
         return <Preloader/>
     }
 
+    const classNameApp = loggedIn ? s.app : ""
+
     return (
-        <div className={s.app}>
+        <div className={classNameApp}>
             <Header/>
-            {/*<NavBar/>*/}
 
+            {/*<div className={s.container}>*/}
+            <NavBar/>
+            <Main/>
+            {/*</div>*/}
 
-            <div className={s.container}>
-                <NavBar/>
-                <Main/>
-            </div>
-
-            {/*<Footer/>*/}
             <ErrorSnackbar/>
         </div>
     );

@@ -21,10 +21,10 @@ const slice = createSlice({
     name: 'auth',
     initialState: initialState,
     reducers: {
-        setAuthDataAC(state, action: PayloadAction<{ email: string | null, password: string | null }>) {
-            state.email = action.payload.email
-            state.password = action.payload.password
-        },
+        // setAuthDataAC(state, action: PayloadAction<{ email: string | null, password: string | null }>) {
+        //     state.email = action.payload.email
+        //     state.password = action.payload.password
+        // },
 
         loggedInAC(state, action: PayloadAction<{ loggedIn: boolean }>) {
             state.loggedIn = action.payload.loggedIn
@@ -47,7 +47,6 @@ export const loginTC = (data: LoginRequestType): AppThunkType => async (dispatch
     try {
         const res = await authAPI.login(data)
         if(res.data.resultCode === 0){
-            // dispatch(loggedInAC({loggedIn: true}))
             dispatch(initializeAppTC())
             dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
         }
@@ -65,7 +64,6 @@ export const logOutTC = (): AppThunkType => async(dispatch)=>{
         const res = await authAPI.logout()
         if(res.data.resultCode === 0) {
             dispatch(loggedInAC({loggedIn: false}))
-            // dispatch(setInitializedAC({value: false}))
             dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
         }
     }catch (e) {

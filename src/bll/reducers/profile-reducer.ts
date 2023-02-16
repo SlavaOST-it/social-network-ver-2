@@ -83,8 +83,8 @@ export const getProfileTC = (userId: number): AppThunkType => async (dispatch) =
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await profileAPI.getProfile(userId)
+        // dispatch(setAvatarAC({myAvatar: res.data.photos.large}))
         dispatch(setUserProfileAC({profile: res.data}))
-        dispatch(setAvatarAC({myAvatar: res.data.photos.large}))
         dispatch(getStatusTC(userId))
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
