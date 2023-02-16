@@ -6,5 +6,6 @@ export const PATH = {
     dialogs: '/dialogs',
     music: '/music',
     news: '/news',
-    settings: '/settings'
+    settings: '/settings',
+    page404: '/404',
 }
