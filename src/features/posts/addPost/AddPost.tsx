@@ -34,7 +34,7 @@ export const AddPost = () => {
                     placeholder={"Добавить пост..."}
                     className={s.textArea}
                 />
-                <ButtonSend callBack={addPostHandler}/>
+                <ButtonSend callBack={addPostHandler} />
             </div>
         </div>
     );
