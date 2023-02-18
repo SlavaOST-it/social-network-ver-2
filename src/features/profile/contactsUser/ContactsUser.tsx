@@ -54,7 +54,7 @@ export const ContactsUser = () => {
                 {activeBlock === 'me' &&
                     <div>
                         {aboutMe?.length
-                            ? <span className={s.spanDescription}>aboutMe</span>
+                            ? <span className={s.spanDescription}>{aboutMe}</span>
                             : <span className={s.spanNoDescription}> Нет описания </span>}
                     </div>
                 }
@@ -63,7 +63,7 @@ export const ContactsUser = () => {
                     <div className={s.contactsItem}>
                         {itemRender.map((el) =>
                             <div>
-                                <span>{el.title}:</span> {el.link ? el.link : 'нет информации'}
+                                <span>{el.title}:</span> <b>{el.link ? el.link : 'нет информации'}</b>
                             </div>)}
                     </div>
                 }
@@ -71,7 +71,7 @@ export const ContactsUser = () => {
                 {activeBlock === 'job' &&
                     <div>
                         {aboutJob?.length
-                            ? <span className={s.spanDescription}>aboutJob </span>
+                            ? <span className={s.spanDescription}>{aboutJob}</span>
                             : <span className={s.spanNoDescription}>Нет описания </span>}
                     </div>
                 }
