@@ -1,17 +1,22 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 const initialState = {
-id: 1
+    dialogs: [
+        {
+            dialogId: 1, userName: "Thomas", messages: [
+                {messageId: 1, text: "Привет!"},
+                {messageId: 2, text: "Как дела?"}
+            ]
+        }
+    ]
+
 }
 
 const slice = createSlice({
     name: 'dialogs',
     initialState: initialState,
-    reducers: {
-
-    }
+    reducers: {}
 })
-
 
 
 export const dialogsReducer = slice.reducer
