@@ -1,3 +1,6 @@
+import {addNewMessageAC} from "../dialogs-reducer";
 
 
-export type DialogsReducerActionTypes = any
+type AddNewMessageAT = ReturnType<typeof addNewMessageAC>
+
+export type DialogsReducerActionTypes = AddNewMessageAT
