@@ -1,0 +1,93 @@
+.dialogsPage {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+            "n m";
+
+
+  .dialogsNav {
+    grid-area: n;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+
+
+    background-color: #2a5884;
+
+    .activeDialog {
+      background-color: white;
+      border-radius: 15px 0 0 15px;
+
+    }
+
+    .dialogsNavItem {
+      display: flex;
+      align-items: center;
+
+      margin: 20px 0 0 20px;
+      padding: 5px 0;
+
+      img {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+
+        margin: 0 10px;
+      }
+
+      .name {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .dialogs {
+    grid-area: m;
+
+    display: flex;
+
+
+    //margin-left: 20px;
+    //flex-direction: column;
+
+
+    .messages {
+      position: relative;
+      padding-bottom: 80px;
+
+      //max-width: 300px;
+
+      img {
+        width: 50px;
+        height: 50px;
+
+
+      }
+
+      .message {
+
+        padding: 10px 20px;
+        border-radius: 15px;
+        width: auto;
+        background-color: lightgrey;
+      }
+
+      .newMessage {
+        background-color: #5a65ff;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .addNewMessage {
+        position: absolute;
+        bottom: 0;
+        background-color: #a7b8c9;
+
+        box-sizing: border-box;
+        padding: 10px;
+      }
+    }
+  }
+}

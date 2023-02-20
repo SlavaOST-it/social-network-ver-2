@@ -46,10 +46,13 @@ $commonShadow: #a7b8c9;
       transition: all 0.3s linear 0s;
     }
 
-    .sendBtn {
-      img {
-        background-color: $commonShadow;
-      }
-    }
+    //.sendBtn {
+    //  background-color: $commonShadow;
+    //  border: none;
+    //  img {
+    //    height: 20px;
+    //
+    //  }
+    //}
   }
 }
