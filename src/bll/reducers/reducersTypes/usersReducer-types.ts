@@ -2,7 +2,7 @@ import {
     followAC,
     setCurrentPageAC,
     setUsersAC,
-    setUsersTotalCountAC
+    setUsersTotalCountAC, unFollowAC
 } from "../users-reducer";
 
 
@@ -31,6 +31,7 @@ type SetUsersAT = ReturnType<typeof setUsersAC>
 type SetUsersTotalCountAT = ReturnType<typeof setUsersTotalCountAC>
 type SetCurrentPageAT = ReturnType<typeof setCurrentPageAC>
 type  FollowAT = ReturnType<typeof followAC>
+type UnFollowAT = ReturnType<typeof unFollowAC>
 
 
 export type UsersReducerActionTypes =
@@ -38,3 +39,4 @@ export type UsersReducerActionTypes =
     | SetUsersTotalCountAT
     | SetCurrentPageAT
     | FollowAT
+    | UnFollowAT
