@@ -1,0 +1,32 @@
+$commonShadow: #a7b8c9;
+
+.addNewMessage {
+  display: flex;
+  align-items: center;
+
+  background-color: $commonShadow;
+
+  .textArea {
+    font-size: 14px;
+    resize: none;
+
+    outline: none;
+    border: none;
+    border-radius: 5px;
+
+    height: 25px;
+    //width: 85vh;
+    transition: all 0.3s linear 0s;
+  }
+
+  .textArea:focus {
+    height: 65px;
+
+    transition: all 0.3s linear 0s;
+  }
+
+  .sendBtn {
+
+  }
+
+}
