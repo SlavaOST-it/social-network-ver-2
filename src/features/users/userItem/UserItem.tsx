@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import s from "./UserItem.module.scss"
-import basicAvatar from "../../../assets/img/icons/avatar_user.png"
+import basicAvatar from "../../../assets/img/icons/baseAvatar.jpg"
 import {UserType} from "../../../bll/reducers/reducersTypes/usersReducer-types";
 import {NavLink} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
