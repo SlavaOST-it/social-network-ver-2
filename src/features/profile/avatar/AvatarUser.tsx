@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {useAppSelector} from "../../../utils/hooks/hooks";
-import baseAvatarUser from "../../../assets/img/icons/avatar_user.png"
+import baseAvatarUser from "../../../assets/img/icons/baseAvatar.jpg"
 
 
 type AvatarUserType = {

@@ -8,7 +8,7 @@ import {addCommentAC} from "../../../bll/reducers/profile-reducer";
 import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
 
 import likeLogo from "../../../assets/img/icons/like.png"
-import userFriendLogo from "../../../assets/img/userAvaPost.jpg"
+import userFriendLogo from "../../../assets/img/usersBaseAvatar/userAvaPost.jpg"
 
 
 export const PostItem = () => {
