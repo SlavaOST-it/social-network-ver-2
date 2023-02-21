@@ -4,6 +4,8 @@ $commonShadow: #a7b8c9;
   display: flex;
   align-items: center;
 
+  width: 610px;
+
   background-color: $commonShadow;
 
   .textArea {
@@ -15,12 +17,12 @@ $commonShadow: #a7b8c9;
     border-radius: 5px;
 
     height: 25px;
-    //width: 85vh;
+    width: 70vh;
     transition: all 0.3s linear 0s;
   }
 
   .textArea:focus {
-    height: 65px;
+    height: 50px;
 
     transition: all 0.3s linear 0s;
   }

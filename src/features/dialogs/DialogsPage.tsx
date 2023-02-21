@@ -27,21 +27,34 @@ export const DialogsPage = () => {
             </div>
 
             <div className={s.dialogs}>
-                <div className={s.messages}>
-                    {valueDialog === 0 &&
-                        <img src={chatLogo} alt={'chat'}/>
-                    }
+                {valueDialog === 0 &&
+                    <div className={s.addNewChat}>
+                        <>
+                            <img src={chatLogo} alt={'chat'}/>
+                            <p>Выберите чат или создайте новый</p>
+                        </>
 
+                    </div>
+                }
+
+                <div className={s.messages}>
                     {messagesUser &&
                         (messagesUser.map(m =>
-                            <div>{m.map(item =>
-                                <p className={item.messageId > 3 ? (`${s.newMessage} ${s.message}`) : s.message}>{item.text}</p>)}
-                            </div>
+                            <>{m.map(item =>
+                                <p className={item.messageId > 3 ? (`${s.newMessage} ${s.message}`) : s.message}>
+                                    {item.text}
+                                </p>
+                            )}
+
+                                <div className={s.addNewMessage}>
+                                    <AddNewMessage dialogId={valueDialog}/>
+                                </div>
+                            </>
                         ))}
 
-                    <div className={s.addNewMessage}>
-                        <AddNewMessage dialogId={valueDialog}/>
-                    </div>
+                    {/*<div className={s.addNewMessage}>*/}
+                    {/*    <AddNewMessage dialogId={valueDialog}/>*/}
+                    {/*</div>*/}
 
                 </div>
 

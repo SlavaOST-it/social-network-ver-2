@@ -1,7 +1,7 @@
 .dialogsPage {
   display: grid;
   grid-template-columns: 3fr 7fr;
-  grid-template-rows: auto 1fr auto;
+  //grid-template-rows: auto ;
   grid-template-areas:
             "n m";
 
@@ -26,7 +26,7 @@
       display: flex;
       align-items: center;
 
-      margin: 20px 0 0 20px;
+      margin: 10px 0 10px 20px;
       padding: 5px 0;
 
       img {
@@ -44,50 +44,65 @@
   }
 
   .dialogs {
-    grid-area: m;
-
-    display: flex;
+    position: relative;
 
 
-    //margin-left: 20px;
-    //flex-direction: column;
 
 
-    .messages {
-      position: relative;
-      padding-bottom: 80px;
+    .addNewChat {
+      position: absolute;
+      top: 30%;
+      left: 30%;
 
-      //max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       img {
         width: 50px;
         height: 50px;
-
-
       }
+    }
+
+    .messages {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 450px;
+
+
+      margin-bottom: 75px;
 
       .message {
-
+        align-self: flex-start;
         padding: 10px 20px;
         border-radius: 15px;
-        width: auto;
+        word-wrap: break-word;
+        max-width: 450px;
+
+        margin: 5px 10px;
         background-color: lightgrey;
       }
 
+
       .newMessage {
+        align-self: flex-end;
         background-color: #5a65ff;
-        display: flex;
-        justify-content: flex-end;
       }
 
       .addNewMessage {
         position: absolute;
         bottom: 0;
+
         background-color: #a7b8c9;
 
         box-sizing: border-box;
         padding: 10px;
       }
+
     }
   }
 }
