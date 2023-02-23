@@ -11,3 +11,7 @@ export enum ResultCode  {
     OK =0,
     FAILED = 1
 }
+
+export type UsersPageType = {
+    type: 'users' | 'friends'
+}
