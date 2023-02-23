@@ -1,7 +1,6 @@
 .dialogsPage {
   display: grid;
   grid-template-columns: 3fr 7fr;
-  //grid-template-rows: auto ;
   grid-template-areas:
             "n m";
 
@@ -45,9 +44,7 @@
 
   .dialogs {
     position: relative;
-
-
-
+    grid-area: m;
 
     .addNewChat {
       position: absolute;
