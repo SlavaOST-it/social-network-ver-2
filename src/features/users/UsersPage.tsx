@@ -6,15 +6,12 @@ import {PATH} from "../../utils/routes/routes";
 import s from "./UsersPage.module.scss";
 import {UserItem} from "./userItem/UserItem";
 import {BasicPagination} from "../../common/components/pagination/BasicPagination";
-import {AppStatus} from "../../common/types/commonTypes";
+import {AppStatus, UsersPageType} from "../../common/types/commonTypes";
 import {LinearProgress} from "../../common/components/linearProgress/LinearProgress";
 
 
-type UsersPageHOCType = {
-    type: 'users' | 'friends'
-}
 
-export const UsersPage: FC<UsersPageHOCType> = ({type}) => {
+export const UsersPage: FC<UsersPageType> = ({type}) => {
     const dispatch = useAppDispatch()
 
     const usersData = useAppSelector(state => state.users.items)
