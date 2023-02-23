@@ -4,9 +4,12 @@ import avatar1 from "../../assets/img/usersBaseAvatar/userAvaPost.jpg"
 import avatar2 from "../../assets/img/usersBaseAvatar/elonMusk.png"
 import avatar3 from "../../assets/img/usersBaseAvatar/userAvatar1.jpg"
 import avatar4 from "../../assets/img/usersBaseAvatar/userAvatar2.jpg"
+import {DialogsPageType, DialogType} from "./reducersTypes/dialogsReducer-types";
 
 
-const initialState = {
+const initialState: DialogsPageType = {
+selectUser: true,
+
     dialogs: [
         {
             dialogId: 1,
@@ -60,10 +63,20 @@ const slice = createSlice({
                 dialog.messages.push({...newMessage})
             }
         },
+
+        addNewDialogAC(state, action: PayloadAction<{ dialogData: DialogType}>){
+           const newDialog = {
+               dialogId: new Date().getTime(),
+               userName: action.payload.dialogData.userName,
+               avatar: action.payload.dialogData.avatar,
+               messages: []
+           }
+           state.dialogs.unshift({...newDialog})
+        }
     }
 })
 
 
 export const dialogsReducer = slice.reducer
-export const {addNewMessageAC} = slice.actions
+export const {addNewMessageAC, addNewDialogAC} = slice.actions
 
