@@ -1,9 +1,15 @@
-import {addNewDialogAC, addNewMessageAC} from "../dialogs-reducer";
+import {
+    addNewDialogAC,
+    addNewMessageAC,
+    changeSelectedStatusAC,
+    setCurrentDialogIdAC,
+} from "../dialogs-reducer";
 
 
 // ===== Initial State ===== //
 export type DialogsPageType = {
     selectUser: boolean,
+    currentDialogId: number
     dialogs: DialogType[]
 }
 
@@ -23,5 +29,7 @@ export type MessageType = {
 // ===== Action Type ==== //
 type AddNewMessageAT = ReturnType<typeof addNewMessageAC>
 type AddNewDialogAT = ReturnType<typeof addNewDialogAC>
+type ChangeSelectedStatusAT = ReturnType<typeof changeSelectedStatusAC>
+type SetCurrentDialogIdAT = ReturnType<typeof setCurrentDialogIdAC>
 
-export type DialogsReducerActionTypes = AddNewMessageAT | AddNewDialogAT
+export type DialogsReducerActionTypes = AddNewMessageAT | AddNewDialogAT | ChangeSelectedStatusAT | SetCurrentDialogIdAT
