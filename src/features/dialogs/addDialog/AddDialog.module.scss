@@ -17,10 +17,19 @@
     border-radius: 0 10px 10px 0;
     padding: 0 20px 0 0;
 
+    //overflow-y: auto;
+    //overflow-x: hidden;
+    //height: 450px;
+
     .userItem {
+      cursor: pointer;
+
+
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      margin: 12px 60px;
 
       .avatar {
         width: 80px;
@@ -34,6 +43,65 @@
 
         margin-bottom: 5px;
       }
+
+      .checked {
+        width: 25px;
+        height: 25px;
+
+        opacity: 0.4;
+      }
+
+      .activeChecked {
+        opacity: 1;
+      }
+    }
+
+    .buttonsGroup {
+      margin-bottom: 30px;
+
+      .addDialogButton {
+        cursor: pointer;
+        color: #4f4f4f;
+
+        font-size: 14px;
+        font-weight: bold;
+
+        margin: 6px 6px 0;
+        padding: 5px;
+
+        border: 2px solid rgb(166, 183, 200);
+        border-radius: 5px;
+        background-color: rgb(166, 183, 200);
+
+        transition: all 0.3s linear 0s;
+      }
+
+      .addDialogButton:hover {
+        color: white;
+        background-color: rgb(84, 123, 167);
+        border: 2px solid rgb(84, 123, 167);
+
+        transition: all 0.3s linear 0s;
+      }
+
+      .buttonBasic {
+        cursor: pointer;
+        color: #4f4f4f;
+
+        font-size: 14px;
+        font-weight: bold;
+
+        margin: 6px 6px 0;
+        padding: 5px;
+
+        border: 2px solid rgb(166, 183, 200);
+        border-radius: 5px;
+        background-color: rgb(255, 255, 255);
+
+        transition: all 0.3s linear 0s;
+      }
     }
   }
 }
+
+

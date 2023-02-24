@@ -12,8 +12,24 @@
     display: flex;
     flex-direction: column;
 
-
+    border-radius: 10px 0 0 10px;
     background-color: #2a5884;
+
+    .addNewChatButton {
+      cursor: pointer;
+      padding: 15px 10px;
+      margin: 10px 20px;
+      border-radius: 15px;
+      border:  none;
+      font-weight: bold;
+
+      transition: all 0.3s linear 0s;
+    }
+
+    .addNewChatButton:hover {
+      background-color: lightgrey;
+      transition: all 0.3s linear 0s;
+    }
 
     .activeDialog {
       background-color: white;
@@ -59,6 +75,10 @@
         width: 50px;
         height: 50px;
       }
+
+      b {
+        cursor: pointer;
+      }
     }
 
     .messages {
@@ -77,6 +97,7 @@
         align-self: flex-start;
         padding: 10px 20px;
         border-radius: 15px;
+
         word-wrap: break-word;
         max-width: 450px;
 
