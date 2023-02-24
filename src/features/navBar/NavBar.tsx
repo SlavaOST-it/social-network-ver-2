@@ -2,23 +2,15 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 
 import s from "./NavBar.module.scss"
-
-import {getProfileTC} from "../../bll/reducers/profile-reducer";
 import {PATH} from "../../utils/routes/routes";
-import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
+import {useAppSelector} from "../../utils/hooks/hooks";
 
 
 export const NavBar = () => {
-    const dispatch = useAppDispatch()
-
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
-    const myId = useAppSelector(state => state.profile.myId)
-
-    const changeMyProfilePage = (myId: number) => {
-        dispatch(getProfileTC(myId))
-    }
 
     const menuLinks = [
+        {id: 1, path: PATH.profile, nameLink: "Моя страница"},
         {id: 2, path: PATH.dialogs, nameLink: "Сообщения"},
         {id: 3, path: PATH.friends, nameLink: "Мои друзья"},
         {id: 4, path: PATH.users, nameLink: "Пользователи"},
@@ -31,16 +23,6 @@ export const NavBar = () => {
         <nav className={s.navbar}>
             {loggedIn &&
                 <ul>
-                    <li>
-                        <NavLink
-                            to={PATH.profile}
-                            onClick={() => changeMyProfilePage(myId)}
-                            className={({isActive}) => isActive ? s.activeLink : s.link}
-                        >
-                            Моя страница
-                        </NavLink>
-                    </li>
-
                     {menuLinks.map(el =>
                         <li key={el.id}>
                             <NavLink

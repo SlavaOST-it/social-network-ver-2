@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./ProfilePage.module.scss"
-import {useAppSelector} from "../../utils/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 import {AvatarUser} from "./avatar/AvatarUser";
 
 import bgIMG from "../../assets/img/bg5.jpg"
@@ -10,14 +10,19 @@ import {UserStatus} from "./userStatus/UserStatus";
 import {ContactsUser} from "./contactsUser/ContactsUser";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../utils/routes/routes";
+import {getProfileTC} from "../../bll/reducers/profile-reducer";
 
 
 export const ProfilePage = () => {
-
+    const dispatch = useAppDispatch()
     const myId = useAppSelector(state => state.profile.myId)
     const userData = useAppSelector(state => state.profile.profile)
 
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
+
+    useEffect(() => {
+        dispatch(getProfileTC(myId))
+    }, [])
 
     if (!loggedIn) {
         return <Navigate to={PATH.login}/>
