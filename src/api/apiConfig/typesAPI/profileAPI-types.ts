@@ -32,3 +32,15 @@ export type ChangeStatusResponseType = {
     fieldsErrors: [],
     resultCode: number
 }
+
+
+export type UpdatePhotoResponseType ={
+    data: {
+        photos: {
+            small: string | null,
+            large: string | null
+        }
+    },
+    messages: string[],
+    resultCode: number
+}

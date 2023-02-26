@@ -1,5 +1,9 @@
 import {instance} from "./apiConfig/instance";
-import {ChangeStatusResponseType, UserProfileType} from "./apiConfig/typesAPI/profileAPI-types";
+import {
+    ChangeStatusResponseType,
+    UpdatePhotoResponseType,
+    UserProfileType
+} from "./apiConfig/typesAPI/profileAPI-types";
 
 
 export const profileAPI = {
@@ -14,6 +18,16 @@ export const profileAPI = {
 
     changeStatusProfile(status: string) {
         return instance.put<ChangeStatusResponseType>(`/profile/status`, {status})
+    },
+
+    updatePhoto(photo: string) {
+        let formData = new FormData();
+        formData.append('image', photo)
+        return instance.put<UpdatePhotoResponseType>(`/profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
 
 }
