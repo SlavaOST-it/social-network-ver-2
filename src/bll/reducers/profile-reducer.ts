@@ -12,7 +12,7 @@ import {ProfilePageType} from "./reducersTypes/profileReducer-types";
 const initialState: ProfilePageType = {
     profile: {} as UserProfileType,
     myId: 0,
-    myAvatar: null,
+    userAvatar: null,
 
     status: "",
     posts: [
@@ -41,8 +41,8 @@ const slice = createSlice({
             state.status = action.payload.status
         },
 
-        setAvatarAC(state, action: PayloadAction<{ myAvatar: string | null }>) {
-            state.myAvatar = action.payload.myAvatar
+        setAvatarAC(state, action: PayloadAction<{ userAvatar: string | null }>) {
+            state.userAvatar = action.payload.userAvatar
         },
 
         setMyIdAC(state, action: PayloadAction<{ myId: number}>) {
@@ -120,6 +120,19 @@ export const changeStatusTC = (status: string): AppThunkType => async (dispatch)
             dispatch(setAppStatusAC({status: AppStatus.FAILED}))
         }
     } catch (e) {
+        baseErrorHandler(e as Error | AxiosError, dispatch)
+    }
+}
+
+export const updatePhotoUserTC = (photo: string) : AppThunkType => async (dispatch) => {
+    dispatch(setAppStatusAC({status: AppStatus.LOADING}))
+    try {
+        const res = await profileAPI.updatePhoto(photo)
+        if (res.data.resultCode === ResultCode.OK){
+            dispatch(setAvatarAC({userAvatar: res.data.data.photos.large}))
+            dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+        }
+    }catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
     }
 }

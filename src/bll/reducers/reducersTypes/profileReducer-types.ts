@@ -5,7 +5,7 @@ import {addCommentAC, addPostAC, setAvatarAC, setMyIdAC, setStatusAC, setUserPro
 export type ProfilePageType = {
     profile: UserProfileType | null,
     myId: number
-    myAvatar: string | null,
+    userAvatar: string | null,
     status: string | null,
     posts: PostsDataType[]
 }
