@@ -4,14 +4,14 @@ import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 import {AvatarUser} from "./avatar/AvatarUser";
 
 import bgIMG from "../../assets/img/bg5.jpg"
+import checkLogo from "../../assets/img/icons/check-mark-button-svgrepo-com.svg"
+import crossLogo from "../../assets/img/icons/cross-mark-button-svgrepo-com.svg"
 
 import {Posts} from "../posts/Posts";
 import {UserStatus} from "./userStatus/UserStatus";
 import {ContactsUser} from "./contactsUser/ContactsUser";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../utils/routes/routes";
-import {updatePhotoUserTC} from "../../bll/reducers/profile-reducer";
-import {ModalWindow} from "../../common/components/modalWindow/ModalWindow";
 import {EditProfile} from "./editProfile/EditProfile";
 
 
@@ -29,7 +29,6 @@ export const ProfilePage = () => {
     }
 
 
-
     if (!loggedIn) {
         return <Navigate to={PATH.login}/>
     }
@@ -37,7 +36,7 @@ export const ProfilePage = () => {
     return (
         <div className={s.profilePage}>
             {!isProfileEditing
-            ?<>
+                ? <>
                     <div className={s.background}>
                         <img src={bgIMG} alt={"background"}/>
                     </div>
@@ -50,7 +49,17 @@ export const ProfilePage = () => {
                             <div className={s.nameAndStatus}>
                                 <p className={s.userName}>{userData?.fullName}</p>
                                 <UserStatus/>
-                                <p>В поиске работы: {userData?.lookingForAJob ? "Yes" : "No"}</p>
+
+                                <p className={s.lookingForAJob}>В поиске работы: {userData?.lookingForAJob
+                                    ? <>
+                                        Да
+                                        <img src={checkLogo} alt={'check'} className={s.lookingForJobLogo}/>
+                                    </>
+                                    : <>
+                                        Нет
+                                        <img src={crossLogo} alt={'check'} className={s.lookingForJobLogo}/>
+                                    </>
+                                }</p>
                             </div>
 
                             <div>
@@ -63,7 +72,8 @@ export const ProfilePage = () => {
                             <button
                                 onClick={onActiveModalHandler}
                                 className={s.editProfileBtn}>
-                                Редактировать профиль</button>
+                                Редактировать профиль
+                            </button>
                         }
                     </div>
 
@@ -75,11 +85,11 @@ export const ProfilePage = () => {
                         <Posts/>
                     </div>
                 </>
-                
+
                 : <EditProfile isAEditingProfile={setIsProfileEditing}/>
-            
+
             }
-            
+
         </div>
     );
 };
