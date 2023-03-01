@@ -11,6 +11,7 @@ import {loginTC} from "../../bll/reducers/auth-reducer";
 import bgLogin from "../../assets/img/bgLogin.jpg"
 
 
+
 export const Login = () => {
     const dispatch = useAppDispatch()
 
@@ -29,7 +30,7 @@ export const Login = () => {
         }),
 
         onSubmit: values => {
-            dispatch((loginTC({email: values.email, password: values.password, rememberMe: values.rememberMe})))
+            dispatch(loginTC({email: values.email, password: values.password, rememberMe: values.rememberMe}))
             formik.resetForm()
         }
     })
