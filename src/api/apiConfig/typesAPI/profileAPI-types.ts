@@ -1,4 +1,3 @@
-
 // ===== get profile response ===== //
 export type UserProfileType = {
     userId: number | null,
@@ -24,7 +23,6 @@ export type PhotoProfile = {
 }
 
 
-
 // ===== Change status ===== //
 export type ChangeStatusResponseType = {
     data: {},
@@ -34,7 +32,7 @@ export type ChangeStatusResponseType = {
 }
 
 
-export type UpdatePhotoResponseType ={
+export type UpdatePhotoResponseType = {
     data: {
         photos: {
             small: string | null,
@@ -43,4 +41,30 @@ export type UpdatePhotoResponseType ={
     },
     messages: string[],
     resultCode: number
+}
+
+
+// ===== Update Profile Info =====//
+export type UpdateProfileRequestType = {
+    userId: number,
+    aboutMe: string,
+    lookingForAJob: boolean,
+    lookingForAJobDescription: string,
+    fullName: string,
+    contacts: {
+        github: string,
+        vk: string,
+        facebook: string,
+        instagram: string,
+        twitter: string,
+        website: string,
+        youtube: string,
+        mainLink: string
+    }
+}
+
+export type UpdateProfileResponseType = {
+    resultCode: number
+    messages: string[],
+    data: object
 }

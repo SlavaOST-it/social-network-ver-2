@@ -1,7 +1,7 @@
 import {instance} from "./apiConfig/instance";
 import {
     ChangeStatusResponseType,
-    UpdatePhotoResponseType,
+    UpdatePhotoResponseType, UpdateProfileRequestType, UpdateProfileResponseType,
     UserProfileType
 } from "./apiConfig/typesAPI/profileAPI-types";
 
@@ -28,6 +28,10 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+
+    updateProfileInfo(data: UpdateProfileRequestType) {
+        return instance.put<UpdateProfileResponseType>(`/profile`, data)
     }
 
 }
