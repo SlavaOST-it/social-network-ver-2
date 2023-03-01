@@ -5,7 +5,7 @@ import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {profileAPI} from "../../api/profileAPI";
 import {setAppErrorAC, setAppStatusAC} from "./app-reducer";
 import {AppStatus, ResultCode} from "../../common/types/commonTypes";
-import {UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
+import {UpdateProfileRequestType, UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
 import {ProfilePageType} from "./reducersTypes/profileReducer-types";
 
 
@@ -83,7 +83,7 @@ export const getProfileTC = (userId: number): AppThunkType => async (dispatch) =
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await profileAPI.getProfile(userId)
-        // dispatch(setAvatarAC({myAvatar: res.data.photos.large}))
+        dispatch(setAvatarAC({userAvatar: res.data.photos.large}))
         dispatch(setUserProfileAC({profile: res.data}))
         dispatch(getStatusTC(userId))
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
@@ -132,6 +132,22 @@ export const updatePhotoUserTC = (photo: string) : AppThunkType => async (dispat
             dispatch(setAvatarAC({userAvatar: res.data.data.photos.large}))
             dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
         }
+    }catch (e) {
+        baseErrorHandler(e as Error | AxiosError, dispatch)
+    }
+}
+
+export const updateProfileInfoTC = (data: UpdateProfileRequestType): AppThunkType => async (dispatch) => {
+    dispatch(setAppStatusAC({status: AppStatus.LOADING}))
+
+    try {
+        const res = await profileAPI.updateProfileInfo(data)
+        if (res.data.resultCode === ResultCode.OK){
+            dispatch(getProfileTC(data.userId))
+
+            dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+        }
+
     }catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
     }
