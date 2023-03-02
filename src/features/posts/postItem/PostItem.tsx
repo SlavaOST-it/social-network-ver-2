@@ -40,7 +40,7 @@ export const PostItem = () => {
                     {/*{(post.id > 3 && myId !== userId) &&*/}
                     <>
                         <div className={s.headerBlock}>
-                            <AvatarUser type={"my"} className={s.avatar}/>
+                            <AvatarUser className={s.avatar}/>
                             <span className={s.userName}>{userName}</span>
                         </div>
 
@@ -65,7 +65,7 @@ export const PostItem = () => {
                                                 <span className={s.userName}>Thomas Shelby</span>
                                             </div>
                                             : <div className={s.userInfo}>
-                                                <AvatarUser type={"my"} className={s.avatar}/>
+                                                <AvatarUser className={s.avatar}/>
                                                 <span className={s.userName}>{userName}</span>
                                             </div>
                                         }

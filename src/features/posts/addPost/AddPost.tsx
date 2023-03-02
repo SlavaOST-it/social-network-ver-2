@@ -27,7 +27,7 @@ export const AddPost = () => {
     return (
         <div className={s.addPost}>
             <div className={s.wrapper}>
-                <AvatarUser type={"my"} className={s.avatar}/>
+                <AvatarUser className={s.avatar}/>
                 <textarea
                     value={valueText}
                     onChange={changeTextPost}
