@@ -13,7 +13,7 @@ import {logOutTC} from "../../../bll/reducers/auth-reducer";
 
 export const HeaderItem = () => {
     const dispatch = useAppDispatch()
-    const userName = useAppSelector(state => state.profile.profile?.fullName)
+    const userAvatar = useAppSelector(state => state.profile.myAvatar!)
 
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -30,12 +30,12 @@ export const HeaderItem = () => {
 
     const logOutHandle = () => {
         onCloseHandle()
-       dispatch(logOutTC())
+        dispatch(logOutTC())
     }
 
     return (
         <div className={s.headerItem}>
-            <div className={s.userName}>{userName}</div>
+            {/*<div className={s.userName}></div>*/}
             <Button
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}
@@ -43,8 +43,8 @@ export const HeaderItem = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={onClickHandle}
             >
-                <AvatarUser type={'my'} className={s.userAvatar}/>
 
+                <img src={userAvatar} className={s.userAvatar} alt={'user photo'}/>
                 <img className={s.arrowDown} src={arrowDown} alt={'arrow menu'}/>
 
             </Button>
