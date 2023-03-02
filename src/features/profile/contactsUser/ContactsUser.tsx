@@ -8,7 +8,7 @@ type ActiveBlockType = 'me' | 'contacts' | 'job'
 
 export const ContactsUser = () => {
     const aboutMe = useAppSelector(state => state.profile.profile?.aboutMe)
-    const contacts = useAppSelector(state => state.profile.profile?.contacts)
+    const contacts = useAppSelector(state => state.profile.profile!.contacts)
     const aboutJob = useAppSelector(state => state.profile.profile?.lookingForAJobDescription)
 
     const [activeBlock, setActiveBlock] = useState<ActiveBlockType>('me')
@@ -62,13 +62,15 @@ export const ContactsUser = () => {
 
                 {activeBlock === 'contacts' &&
                     <div className={s.contactsItem}>
-                        Contacts: {Object.keys(contacts!).map(key =>{
-                        return <Contact key={key} contactTitle={key} contactValue={contacts[key] ? contacts[key] : "нет информации"}/>
-                        })
-                    }
+                        {/*{Object.keys(contacts).map(key =>{*/}
+                        {/*return <Contact key={key} contactTitle={key} contactValue={contacts[key]}/>*/}
+                        {/*})}*/}
+
+
+
                         {itemRender.map((el) =>
                             <div>
-                                <span>{el.title}:</span> <b>{el.link ? el.link : 'нет информации'}</b>
+                                <span key={el.title}>{el.title}:</span> <b>{el.link ? el.link : 'нет информации'}</b>
                             </div>)
                         }
                     </div>
@@ -89,7 +91,7 @@ export const ContactsUser = () => {
 
 type ContactType = {
     contactTitle: string,
-    contactValue: string | null
+    contactValue: any
 }
 const Contact: FC<ContactType> = ({contactTitle, contactValue})=>{
     return(

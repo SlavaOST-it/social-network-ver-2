@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import s from "./ProfilePage.module.scss"
-import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
+import {useAppSelector} from "../../utils/hooks/hooks";
 import {AvatarUser} from "./avatar/AvatarUser";
 
 import bgIMG from "../../assets/img/bg5.jpg"
@@ -16,9 +16,10 @@ import {EditProfile} from "./editProfile/EditProfile";
 
 
 export const ProfilePage = () => {
-    const dispatch = useAppDispatch()
+
     const myId = useAppSelector(state => state.profile.myId)
     const userData = useAppSelector(state => state.profile.profile)
+
 
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
 
@@ -43,9 +44,11 @@ export const ProfilePage = () => {
 
                     <div className={s.content}>
                         <div className={s.infoProfile}>
-                            <AvatarUser type={'my'} className={s.avatar}/>
+                            <div className={s.photoBlock}>
+                                <AvatarUser className={s.avatar}/>
 
 
+                            </div>
                             <div className={s.nameAndStatus}>
                                 <p className={s.userName}>{userData?.fullName}</p>
                                 <UserStatus/>

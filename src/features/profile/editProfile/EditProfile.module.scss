@@ -1,0 +1,136 @@
+
+.editProfile {
+
+  //display: flex;
+  //flex-direction: column;
+  //align-items: flex-end;
+
+  margin: 20px;
+
+  h2 {
+    text-align: center;
+  }
+
+  .changePhoto {
+    display: flex;
+    align-items: center;
+    //align-items: flex-start;
+
+
+    margin: 20px 0;
+
+
+    .changeBlock {
+      display: flex;
+      align-items: flex-end;
+      text-align: center;
+
+      margin-left: 180px;
+
+      .avatar {
+        max-width: 180px;
+        max-height: 180px;
+        border-radius: 50%;
+
+
+      }
+
+      .changeAvatarBtn {
+        width: 50px;
+        height: 50px;
+
+        margin-left: -40px;
+
+      }
+    }
+  }
+
+  .switchBlock {
+    display: flex;
+    align-items: center;
+
+    .toggleBlock {
+      display: flex;
+      margin-left: 180px;
+
+      b {
+        margin: 0 10px;
+      }
+
+      input[type=checkbox] {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+      }
+
+      label {
+        cursor: pointer;
+        text-indent: -9999px;
+        width: 50px;
+        height: 25px;
+        background: #fd5a78;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+      }
+
+      label:after {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        border-radius: 90px;
+        transition: 0.3s;
+      }
+
+      input:checked + label {
+        background: #76b155;
+      }
+
+      input:checked + label:after {
+        left: calc(100% - 4px);
+        transform: translateX(-100%);
+      }
+
+      label:active:after {
+        width: 35px;
+      }
+    }
+  }
+
+  .aboutMe {
+    display: flex;
+    align-items: center;
+
+    textarea {
+      align-items: center;
+      margin: 0 auto;
+      //margin-left: 180px;
+      font-size: 14px;
+      resize: none;
+
+      //outline: none;
+      border-radius: 5px;
+
+      height: 100px;
+      width: 350px;
+    }
+  }
+
+  .fullName {
+    display: flex;
+    align-items: center;
+
+    input {
+      margin: 0 auto;
+      height: 30px;
+      width: 200px;
+
+    }
+  }
+
+
+}

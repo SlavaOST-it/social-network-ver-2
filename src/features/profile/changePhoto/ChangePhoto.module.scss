@@ -1,0 +1,21 @@
+.changePhoto {
+  display: flex;
+
+  .avatar {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+  }
+
+  .changesBlock {
+
+
+    .changeAvatarBtn {
+      z-index: 1;
+
+      height: 35px;
+      border: 1px;
+      border-radius: 5px;
+    }
+  }
+}

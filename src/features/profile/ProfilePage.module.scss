@@ -27,8 +27,8 @@
 
 
       .avatar {
-        width: 150px;
-        height: 150px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
 
         padding: 8px;
@@ -46,12 +46,25 @@
         .userName {
           font-size: 20px;
           font-weight: bold;
-          margin: 20px 0;
+          margin: 20px -8px;
+        }
+
+        .lookingForAJob {
+          display: flex;
+          align-items: center;
+          margin: 20px -15px;
+
+          img {
+            width: 20px;
+            height: 20px;
+
+            margin-left: 5px;
+          }
         }
       }
     }
 
-    .editProfileBtn{
+    .editProfileBtn {
       padding: 8px 15px;
 
       background-color: lightgrey;
@@ -62,7 +75,7 @@
       transition: all 0.3s linear 0s;
     }
 
-    .editProfileBtn:hover{
+    .editProfileBtn:hover {
       background-color: white;
       opacity: 1;
 
