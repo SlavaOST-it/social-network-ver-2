@@ -12,7 +12,9 @@ import {ProfilePageType} from "./reducersTypes/profileReducer-types";
 const initialState: ProfilePageType = {
     profile: {} as UserProfileType,
     myId: 0,
-    userAvatar: null,
+    isOwner: false,
+    myAvatar: null,
+
 
     status: "",
     posts: [
@@ -23,7 +25,7 @@ const initialState: ProfilePageType = {
             message: 'Frontend or Backend? Или же Fullstack?',
             likesCount: 5,
             comments: [
-                {id:1, text:"Не парься, выбери MacDonald's"}
+                {id: 1, text: "Не парься, выбери MacDonald's"}
             ]
         }
     ]
@@ -37,15 +39,19 @@ const slice = createSlice({
             state.profile = action.payload.profile
         },
 
-        setStatusAC(state, action: PayloadAction<{ status: string | null}>) {
+        setOwnerAC(state, action: PayloadAction<{ isOwner: boolean }>) {
+            state.isOwner = action.payload.isOwner
+        },
+
+        setStatusAC(state, action: PayloadAction<{ status: string | null }>) {
             state.status = action.payload.status
         },
 
         setAvatarAC(state, action: PayloadAction<{ userAvatar: string | null }>) {
-            state.userAvatar = action.payload.userAvatar
+            state.myAvatar = action.payload.userAvatar
         },
 
-        setMyIdAC(state, action: PayloadAction<{ myId: number}>) {
+        setMyIdAC(state, action: PayloadAction<{ myId: number }>) {
             state.myId = action.payload.myId
         },
 
@@ -75,18 +81,33 @@ const slice = createSlice({
 })
 
 export const profileReducer = slice.reducer
-export const {setUserProfileAC, setStatusAC, setAvatarAC, addPostAC, addCommentAC, setMyIdAC} = slice.actions
+export const {
+    setUserProfileAC,
+    setOwnerAC,
+    setStatusAC,
+    setAvatarAC,
+    addPostAC,
+    addCommentAC,
+    setMyIdAC
+} = slice.actions
 
 
 // ===== ThunkCreators ===== //
-export const getProfileTC = (userId: number): AppThunkType => async (dispatch) => {
+export const getProfileTC = (userId: number): AppThunkType => async (dispatch, getState) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
+
+    const myId = getState().profile.myId
+
     try {
         const res = await profileAPI.getProfile(userId)
-        dispatch(setAvatarAC({userAvatar: res.data.photos.large}))
-        dispatch(setUserProfileAC({profile: res.data}))
-        dispatch(getStatusTC(userId))
-        dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+        debugger
+            if (myId === res.data.userId) {
+                dispatch(setAvatarAC({userAvatar: res.data.photos.large}))
+            }
+
+            dispatch(setUserProfileAC({profile: res.data}))
+            dispatch(getStatusTC(userId))
+            dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
         dispatch(setAppStatusAC({status: AppStatus.FAILED}))
@@ -124,15 +145,17 @@ export const changeStatusTC = (status: string): AppThunkType => async (dispatch)
     }
 }
 
-export const updatePhotoUserTC = (photo: string) : AppThunkType => async (dispatch) => {
+export const updatePhotoUserTC = (photo: string): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await profileAPI.updatePhoto(photo)
-        if (res.data.resultCode === ResultCode.OK){
-            dispatch(setAvatarAC({userAvatar: res.data.data.photos.large}))
+        if (res.data.resultCode === ResultCode.OK) {
+            if (res.data.data.photos.large) {
+                dispatch(setAvatarAC({userAvatar: res.data.data.photos.large}))
+            }
             dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
         }
-    }catch (e) {
+    } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
     }
 }
@@ -142,13 +165,13 @@ export const updateProfileInfoTC = (data: UpdateProfileRequestType): AppThunkTyp
 
     try {
         const res = await profileAPI.updateProfileInfo(data)
-        if (res.data.resultCode === ResultCode.OK){
+        if (res.data.resultCode === ResultCode.OK) {
             dispatch(getProfileTC(data.userId))
 
             dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
         }
 
-    }catch (e) {
+    } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
     }
 }
