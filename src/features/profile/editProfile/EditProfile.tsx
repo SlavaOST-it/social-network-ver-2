@@ -23,7 +23,6 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
         const fullName = useAppSelector(state => state.profile.profile?.fullName)
         const contacts = useAppSelector(state => state.profile.profile!.contacts)
 
-        // const [photo, setPhoto] = useState<string>(avatar ? avatar : baseAvatarUser)
 
         const checkValue = (value: any) => {
             if (value === null || undefined) {
@@ -71,7 +70,6 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
 
             onSubmit: values => {
                 dispatch(updateProfileInfoTC(values))
-                // dispatch(updatePhotoUserTC(photo))
                 isAEditingProfile(false)
                 formik.resetForm()
             }
@@ -98,6 +96,13 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
                 <div className={s.editProfile}>
 
                     <h2>Редактировать профиль</h2>
+
+                    <hr/>
+
+                    <div className={s.changeTheme}>
+                        <h3>Тема оформления</h3>
+                        <b>Изменить тему</b>
+                    </div>
 
                     <hr/>
 
@@ -152,9 +157,11 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
                     <hr/>
 
                     <div className={s.aboutMe}>
+
                         <h3>Обо мне</h3>
+
                         <textarea
-                            className={""}
+                            className={s.textarea}
                             id={"aboutMe"}
                             {...formik.getFieldProps('aboutMe')}
                         />
@@ -162,10 +169,10 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
 
                     <hr/>
 
-                    <div className={s.aboutMe}>
+                    <div className={s.skills}>
                         <h3>Мои навыки</h3>
                         <textarea
-                            className={""}
+                            className={s.textarea}
                             id={"lookingForAJobDescription"}
                             {...formik.getFieldProps('lookingForAJobDescription')}
                         />
@@ -176,7 +183,6 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
                     <div className={s.fullName}>
                         <h3>Мое имя</h3>
                         <input
-                            className={""}
                             id={"fullName"}
                             {...formik.getFieldProps('fullName')}
                         />
@@ -185,34 +191,38 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
                     <hr/>
 
                     <div className={s.contacts}>
-                        <h3>Contacts: </h3>
+                        <h3>Контакты: </h3>
 
                         {Object.keys(contacts).map(key => {
                             return (
-                                <div key={key}>
-                                    <b>{key}:
-                                        <input
-                                            className={""}
-                                            id={"contacts." + key}
-                                            {...formik.getFieldProps("contacts." + key)}
-                                        /></b>
+                                <div key={key} className={s.contactItem}>
+                                    <div><b>{key}:</b></div>
+                                    <input
+                                        className={s.inputContact}
+                                        id={"contacts." + key}
+                                        {...formik.getFieldProps("contacts." + key)}
+                                    />
                                 </div>)
                         })}
                     </div>
 
                     <hr/>
 
-                    <button
-                        type={'submit'}
-                        disabled={formik.isSubmitting}
-                    >
-                        Сохранить
-                    </button>
+                    <div className={s.buttons}>
+                        <button
+                            type={'submit'}
+                            disabled={formik.isSubmitting}
+                            className={s.saveButton}
+                        >
+                            Сохранить
+                        </button>
 
-                    <button onClick={() => isAEditingProfile(false)}>
-                        Отмена
-                    </button>
-
+                        <button
+                            onClick={() => isAEditingProfile(false)}
+                        >
+                            Отмена
+                        </button>
+                    </div>
                 </div>
             </form>
 

@@ -11,14 +11,22 @@
     text-align: center;
   }
 
+  .changeTheme {
+    display: flex;
+
+    align-items: center;
+
+    b {
+      margin-left: 180px;
+      opacity: 0.7;
+    }
+  }
+
   .changePhoto {
     display: flex;
     align-items: center;
-    //align-items: flex-start;
-
 
     margin: 20px 0;
-
 
     .changeBlock {
       display: flex;
@@ -32,7 +40,6 @@
         max-height: 180px;
         border-radius: 50%;
 
-
       }
 
       .changeAvatarBtn {
@@ -40,7 +47,6 @@
         height: 50px;
 
         margin-left: -40px;
-
       }
     }
   }
@@ -103,18 +109,32 @@
 
   .aboutMe {
     display: flex;
-    align-items: center;
+    //justify-content: space-between;
+    //align-items: center;
+    //text-align: right;
 
-    textarea {
-      align-items: center;
+    .textarea {
+
+      //align-items: center;
       margin: 0 auto;
       //margin-left: 180px;
-      font-size: 14px;
+      //font-size: 14px;
       resize: none;
-
-      //outline: none;
+      //
       border-radius: 5px;
+      //
+      height: 100px;
+      width: 350px;
+    }
+  }
 
+  .skills {
+    display: flex;
+
+    .textarea {
+      margin: 0 0 0 174px;
+      resize: none;
+      border-radius: 5px;
       height: 100px;
       width: 350px;
     }
@@ -127,10 +147,34 @@
     input {
       margin: 0 auto;
       height: 30px;
-      width: 200px;
-
+      width: 350px;
     }
   }
 
+  .contacts {
+    display: flex;
+    flex-direction: column;
+
+    .contactItem {
+      display: flex;
+      justify-content: space-between;
+
+      max-width: 350px;
+      margin: 5px 0 5px 290px;
+
+      .inputContact {
+
+      }
+    }
+
+  }
+
+  .buttons {
+    text-align: center;
+
+    .saveButton{
+
+    }
+  }
 
 }
