@@ -6,7 +6,7 @@ import chatLogo from "../../assets/img/icons/chat-svgrepo-com.svg"
 import {AddDialog} from "./addDialog/AddDialog";
 import {Navigate} from "react-router-dom";
 import {PATH} from "../../utils/routes/routes";
-import {changeSelectedStatusAC, setCurrentDialogIdAC} from "../../bll/reducers/dialogs-reducer";
+import {addNewMessageAC, changeSelectedStatusAC, setCurrentDialogIdAC} from "../../bll/reducers/dialogs-reducer";
 
 
 export const DialogsPage = () => {

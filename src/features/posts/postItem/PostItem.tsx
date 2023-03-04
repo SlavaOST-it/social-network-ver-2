@@ -37,7 +37,6 @@ export const PostItem = () => {
             {postsData.map(post =>
 
                 <div key={post.id} className={s.postBlock}>
-                    {/*{(post.id > 3 && myId !== userId) &&*/}
                     <>
                         <div className={s.headerBlock}>
                             <AvatarUser className={s.avatar}/>
@@ -90,10 +89,9 @@ export const PostItem = () => {
                                 <ButtonSend callBack={() => sendCommentHandler(valueComment, post.id)}/>
                             </div>
                         </div>
+
                         <hr/>
                     </>
-                    {/*}*/}
-
                 </div>
             )}
 
