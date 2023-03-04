@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
 import s from "./HeaderItem.module.scss";
-import {AvatarUser} from "../../profile/avatar/AvatarUser";
+
+import searchLogo from "../../../assets/img/icons/search-alt-svgrepo-com.svg"
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -35,7 +36,7 @@ export const HeaderItem = () => {
 
     return (
         <div className={s.headerItem}>
-            {/*<div className={s.userName}></div>*/}
+            <img src={searchLogo} className={s.search} alt={'search'}/>
             <Button
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}
