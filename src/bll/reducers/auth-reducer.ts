@@ -1,7 +1,7 @@
 import {AuthPageType} from "./reducersTypes/authReducer-types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {AppThunkType} from "../store/store";
-import {initializeAppTC, setAppStatusAC, setInitializedAC} from "./app-reducer";
+import {initializeAppTC, setAppStatusAC} from "./app-reducer";
 import {AppStatus} from "../../common/types/commonTypes";
 import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {AxiosError} from "axios";

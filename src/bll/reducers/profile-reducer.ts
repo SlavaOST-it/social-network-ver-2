@@ -100,7 +100,6 @@ export const getProfileTC = (userId: number): AppThunkType => async (dispatch, g
 
     try {
         const res = await profileAPI.getProfile(userId)
-        debugger
             if (myId === res.data.userId) {
                 dispatch(setAvatarAC({userAvatar: res.data.photos.large}))
             }
