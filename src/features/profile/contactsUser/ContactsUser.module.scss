@@ -1,4 +1,4 @@
-$colorBlue: #959595;
+
 
 .contacts {
   display: flex;
@@ -20,7 +20,7 @@ $colorBlue: #959595;
       padding: 8px 50px 0 50px;
       border-radius: 20px 20px 0 0;
       border: 1px solid lightgrey;
-      background-color: #a8b9ca;
+      background-color: #dfdfdf;
 
       color: #4a4a4a;
       font-size: 18px;
@@ -35,7 +35,7 @@ $colorBlue: #959595;
       padding: 8px 50px 0 50px;
 
       border-radius: 20px 20px 0 0;
-      box-shadow: 0px -5px 5px 1px $colorBlue;
+      box-shadow: 0px -5px 5px 1px #959595;
 
       transition: all 0.3s linear 0s;
     }

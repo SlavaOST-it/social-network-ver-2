@@ -3,19 +3,18 @@ import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
 import s from "./HeaderItem.module.scss";
 
 import searchLogo from "../../../assets/img/icons/search-alt-svgrepo-com.svg"
+import logOutLogo from "../../../assets/img/icons/navBar/logout.svg"
+
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import arrowDown from "../../../assets/img/icons/down-arrow-svgrepo-com.svg"
-import {NavLink} from "react-router-dom";
-import {PATH} from "../../../utils/routes/routes";
 import {logOutTC} from "../../../bll/reducers/auth-reducer";
 
 
 export const HeaderItem = () => {
     const dispatch = useAppDispatch()
     const userAvatar = useAppSelector(state => state.profile.myAvatar!)
-
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -30,8 +29,8 @@ export const HeaderItem = () => {
     }
 
     const logOutHandle = () => {
-        onCloseHandle()
         dispatch(logOutTC())
+        onCloseHandle()
     }
 
     return (
@@ -45,7 +44,7 @@ export const HeaderItem = () => {
                 onClick={onClickHandle}
             >
 
-                <img src={userAvatar} className={s.userAvatar} alt={'user photo'}/>
+                <img src={userAvatar} className={s.userAvatar} alt={'user'}/>
                 <img className={s.arrowDown} src={arrowDown} alt={'arrow menu'}/>
 
             </Button>
@@ -59,13 +58,9 @@ export const HeaderItem = () => {
                     'aria-labelledby': 'basic-buttons',
                 }}
             >
-                <MenuItem onClick={onCloseHandle}>
-                    <NavLink to={PATH.profile} className={s.menuLink}>
-                        Profile
-                    </NavLink>
-                </MenuItem>
-                <MenuItem onClick={logOutHandle}>
-                    Logout
+                <MenuItem onClick={logOutHandle} className={s.menuLink}>
+
+                    <span>Выйти</span>
                 </MenuItem>
             </Menu>
         </div>

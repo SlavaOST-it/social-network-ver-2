@@ -2,37 +2,58 @@
   grid-area: n;
 
   margin-right: 30px;
-  background-color: white;
+  //background-color: white;
   border-radius: 10px;
 
   ul {
-
 
     li, li:visited {
       list-style-type: none;
       margin: 25px 0;
 
-      text-align: left;
 
       .link, .link:visited, {
+        display: inline-block;
+
         text-decoration: none;
         color: black;
-        padding: 3px 5px;
+
+        padding: 6px 5px;
       }
-    ;
 
       .link:hover {
+        cursor: pointer;
+
+        display: inline-block;
+
         background-color: #d3d3d3;
         border-radius: 5px;
+
+        width: 150px;
       }
 
       .activeLink, .activeLink:visited {
+        cursor: pointer;
+        display: inline-block;
+
+
         text-decoration: none;
         font-weight: bold;
         color: black;
+
         border: 1px black solid;
         border-radius: 5px;
-        padding: 3px 5px;
+        padding: 5px 5px;
+
+        width: 150px;
+
+      }
+
+      .navLogo {
+        width: 18px;
+        height: 18px;
+
+        margin-right: 5px;
       }
     }
   }

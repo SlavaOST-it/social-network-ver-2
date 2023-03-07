@@ -1,8 +1,7 @@
-$commonShadow: #a7b8c9;
 
 .addPost {
   border-radius: 10px;
-  box-shadow: 0 0 5px 5px $commonShadow;
+  box-shadow: 0 0 5px 5px #959595;
 
   margin: 20px;
   padding: 1px;
@@ -11,7 +10,7 @@ $commonShadow: #a7b8c9;
     display: flex;
     align-items: center;
 
-    background-color: $commonShadow;
+    background-color: #cecece;
 
     padding: 5px;
     margin: 20px;

@@ -11,8 +11,6 @@ import {ErrorSnackbar} from "../common/components/errorSnackBar/ErrorSnackbar";
 import {Preloader} from '../common/components/preloader/Preloader';
 
 import {useAppDispatch, useAppSelector} from "../utils/hooks/hooks";
-import {Login} from "../features/login/Login";
-import Preloader2 from "../common/components/preloader/Preloader2";
 
 
 function App() {
@@ -27,18 +25,13 @@ function App() {
     if (!isInitialized) {
         return <Preloader/>
     }
-
-    const classNameApp = loggedIn ? s.app : ""
+    const baseClassName = loggedIn ? s.app : ""
 
     return (
-        <div className={classNameApp}>
+        <div className={baseClassName}>
             <Header/>
-
-            {/*<div className={s.container}>*/}
-            <NavBar/>
+            {loggedIn && <NavBar/>}
             <Main/>
-            {/*</div>*/}
-
             <ErrorSnackbar/>
         </div>
     );

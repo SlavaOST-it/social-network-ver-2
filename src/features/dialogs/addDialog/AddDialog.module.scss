@@ -1,5 +1,5 @@
 .addDialog {
-  background-color: #2a5884;
+  background-color: #cecece;
 
   display: flex;
   justify-content: right;
@@ -16,10 +16,6 @@
 
     border-radius: 0 10px 10px 0;
     padding: 0 20px 0 0;
-
-    //overflow-y: auto;
-    //overflow-x: hidden;
-    //height: 450px;
 
     .userItem {
       cursor: pointer;
@@ -39,7 +35,6 @@
 
       .name {
         font-weight: bold;
-        color: #2a5884;
 
         margin-bottom: 5px;
       }
@@ -61,7 +56,6 @@
 
       .addDialogButton {
         cursor: pointer;
-        color: #4f4f4f;
 
         font-size: 14px;
         font-weight: bold;
@@ -69,24 +63,21 @@
         margin: 6px 6px 0;
         padding: 5px;
 
-        border: 2px solid rgb(166, 183, 200);
+        border: 1px solid rgb(0, 0, 0);
         border-radius: 5px;
-        background-color: rgb(166, 183, 200);
 
         transition: all 0.3s linear 0s;
       }
 
       .addDialogButton:hover {
-        color: white;
-        background-color: rgb(84, 123, 167);
-        border: 2px solid rgb(84, 123, 167);
+        background-color: rgb(169, 169, 169);
+        border: 1px solid rgb(2, 2, 2);
 
         transition: all 0.3s linear 0s;
       }
 
       .buttonBasic {
         cursor: pointer;
-        color: #4f4f4f;
 
         font-size: 14px;
         font-weight: bold;
@@ -94,7 +85,7 @@
         margin: 6px 6px 0;
         padding: 5px;
 
-        border: 2px solid rgb(166, 183, 200);
+        border: 1px solid rgb(5, 5, 5);
         border-radius: 5px;
         background-color: rgb(255, 255, 255);
 

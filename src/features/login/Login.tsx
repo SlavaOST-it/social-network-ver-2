@@ -11,7 +11,6 @@ import {loginTC} from "../../bll/reducers/auth-reducer";
 import bgLogin from "../../assets/img/bgLogin.jpg"
 
 
-
 export const Login = () => {
     const dispatch = useAppDispatch()
 
@@ -41,61 +40,64 @@ export const Login = () => {
     }
 
     return (
-        <div className={s.login}>
+        <div className={s.loginPage}>
+
+            <h2>Добро пожаловать</h2>
+            <p>Описание соц сети</p>
 
             <div className={s.loginBlock}>
-                <h2>Добро пожаловать</h2>
-                <p>Описание соц сети</p>
 
-                <div>
-                    <form onSubmit={formik.handleSubmit}>
-                        <div className={s.inputBlock}>
-                            <input
-                                className={s.input}
-                                id={"email"}
-                                placeholder={"E-mail"}
-                                {...formik.getFieldProps('email')}
-                            />
+                <form onSubmit={formik.handleSubmit} className={s.loginBlock}>
+                    <h3>Вход на сайт</h3>
 
-                            {/*{formik.touched.email && formik.errors.email &&*/}
-                            {/*    <div style={{color: 'red'}}>{formik.errors.email}</div>}*/}
+                    <div className={s.inputBlock}>
+                        <input
+                            className={s.input}
+                            id={"email"}
+                            placeholder={"E-mail"}
+                            {...formik.getFieldProps('email')}
+                        />
 
-                            <input
-                                className={s.input}
-                                id={"password"}
-                                placeholder={"Password"}
-                                type="password"
-                                {...formik.getFieldProps('password')}
-                            />
+                        {/*{formik.touched.email && formik.errors.email &&*/}
+                        {/*    <div style={{color: 'red'}}>{formik.errors.email}</div>}*/}
 
-                            {/*{formik.touched.password && formik.errors.password &&*/}
-                            {/*    <div style={{color: 'red'}}>{formik.errors.password}</div>}*/}
+                        <input
+                            className={s.input}
+                            id={"password"}
+                            placeholder={"Password"}
+                            type="password"
+                            {...formik.getFieldProps('password')}
+                        />
 
-                            <input
-                                className={s.checkbox}
-                                id={"rememberMe"}
-                                name="rememberMe"
-                                type="checkbox"
-                                onChange={formik.handleChange}
-                                checked={formik.values.rememberMe}
-                            /> Запомнить меня
+                        {/*{formik.touched.password && formik.errors.password &&*/}
+                        {/*    <div style={{color: 'red'}}>{formik.errors.password}</div>}*/}
 
-                            <div>
-                                <button
-                                    type={'submit'}
-                                    className={s.btn_login}
-                                    disabled={formik.isSubmitting}
-                                >Login
-                                </button>
-                            </div>
+                        <input
+                            className={s.checkbox}
+                            id={"rememberMe"}
+                            name="rememberMe"
+                            type="checkbox"
+                            onChange={formik.handleChange}
+                            checked={formik.values.rememberMe}
+                        /> Запомнить меня
+
+                        <div>
+                            <button
+                                type={'submit'}
+                                className={s.btn_login}
+                                disabled={formik.isSubmitting}
+                            >Login
+                            </button>
                         </div>
-                    </form>
+                    </div>
+                </form>
+
+                <div className={s.imgBlock}>
+                    <img src={bgLogin} alt={'bg'}/>
                 </div>
             </div>
 
-            <div className={s.imgBlock}>
-                <img src={bgLogin} alt={'bg'}/>
-            </div>
+
         </div>
     );
 };

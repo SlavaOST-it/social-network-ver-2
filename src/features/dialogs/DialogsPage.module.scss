@@ -13,7 +13,7 @@
     flex-direction: column;
 
     border-radius: 10px 0 0 10px;
-    background-color: #2a5884;
+    background-color: #b0b0b0;
 
     .addNewChatButton {
       cursor: pointer;
@@ -108,14 +108,14 @@
 
       .newMessage {
         align-self: flex-end;
-        background-color: #5a65ff;
+        background-color: #6892df;
       }
 
       .addNewMessage {
         position: absolute;
         bottom: 0;
 
-        background-color: #a7b8c9;
+        background-color: #cecece;
 
         box-sizing: border-box;
         padding: 10px;

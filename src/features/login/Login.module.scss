@@ -1,12 +1,16 @@
-.login {
+.loginPage {
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
   margin: 0 auto;
 
+
   .loginBlock {
+    display: flex;
     padding: 20px;
-    background-color: #96735f;
+    //background-color: #96735f;
 
     .inputBlock {
       display: flex;

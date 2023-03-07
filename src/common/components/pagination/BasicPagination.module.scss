@@ -11,15 +11,12 @@
     margin: 0 6px;
     padding: 8px;
 
-    border: 2px solid rgb(84, 124, 168);
-    border-radius: 5px;
-    background-color: rgb(84, 124, 168);
+    border: 1px solid rgb(0, 0, 0);
 
   }
 
   .btnNextPrev {
     cursor: pointer;
-    color: #4f4f4f;
 
     font-size: 16px;
     font-weight: bold;
@@ -27,23 +24,16 @@
     margin: 0 6px;
     padding: 10px;
 
-    border: 2px solid rgb(166, 183, 200);
-    border-radius: 5px;
-    background-color: rgb(166, 183, 200);
+    border: none;
   }
 
   .numberPage {
     cursor: pointer;
-    color: #4f4f4f;
 
     font-size: 16px;
     font-weight: bold;
 
     margin: 0 6px;
     padding: 8px;
-
-    border: 2px solid rgb(166, 183, 200);
-    border-radius: 5px;
-    background-color: rgb(166, 183, 200);
   }
 }

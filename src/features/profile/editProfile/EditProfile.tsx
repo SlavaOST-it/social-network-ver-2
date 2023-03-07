@@ -219,6 +219,7 @@ export const EditProfile: FC<EditProfileType> = ({isAEditingProfile}) => {
 
                         <button
                             onClick={() => isAEditingProfile(false)}
+                            className={s.saveButton}
                         >
                             Отмена
                         </button>

@@ -1,7 +1,6 @@
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 import s from "./ContactsUser.module.scss"
 import {useAppSelector} from "../../../utils/hooks/hooks";
-import {retry} from "@reduxjs/toolkit/query";
 
 
 type ActiveBlockType = 'me' | 'contacts' | 'job'
@@ -62,12 +61,6 @@ export const ContactsUser = () => {
 
                 {activeBlock === 'contacts' &&
                     <div className={s.contactsItem}>
-                        {/*{Object.keys(contacts).map(key =>{*/}
-                        {/*return <Contact key={key} contactTitle={key} contactValue={contacts[key]}/>*/}
-                        {/*})}*/}
-
-
-
                         {itemRender.map((el) =>
                             <div>
                                 <span key={el.title}>{el.title}:</span> <b>{el.link ? el.link : 'нет информации'}</b>
@@ -88,15 +81,3 @@ export const ContactsUser = () => {
         </div>
     );
 };
-
-type ContactType = {
-    contactTitle: string,
-    contactValue: any
-}
-const Contact: FC<ContactType> = ({contactTitle, contactValue})=>{
-    return(
-        <div>
-            <span>{contactTitle}:</span> <b>{contactValue ? contactValue : 'нет информации'}</b>
-        </div>
-    )
-}

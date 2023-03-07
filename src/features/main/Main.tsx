@@ -2,6 +2,7 @@ import React from 'react';
 import {Navigate, Route, Routes} from 'react-router-dom';
 
 import s from "./Main.module.scss"
+import loginClass from "../login/Login.module.scss"
 
 import {PATH} from "../../utils/routes/routes";
 
@@ -11,11 +12,15 @@ import {DialogsPage} from "../dialogs/DialogsPage";
 import {UsersPage} from '../users/UsersPage';
 import {Page404} from "../../common/components/page404/Page404";
 import {PageConstruction} from "../../common/components/pageConstruction/PageConstruction";
+import {useAppSelector} from "../../utils/hooks/hooks";
 
 
 export const Main = () => {
+    const loggedIn = useAppSelector(state => state.auth.loggedIn)
+
+    const baseClassName = loggedIn ? s.main : loginClass.login
     return (
-        <div className={s.main}>
+        <div className={baseClassName}>
             <Routes>
                 <Route path={'/'} element={<Navigate to={PATH.login}/>}/>
                 <Route path={PATH.login} element={<Login/>}/>
