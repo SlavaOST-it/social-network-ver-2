@@ -9,9 +9,13 @@
 
   .loginBlock {
     display: flex;
+
     padding: 20px;
     //background-color: #96735f;
 
+    .devCircleLogo{
+      height: 50px;
+    }
     .inputBlock {
       display: flex;
       flex-direction: column;

@@ -3,6 +3,7 @@ import {Navigate} from 'react-router-dom';
 
 import s from "./Login.module.scss"
 
+import devCircleLogo from "../../assets/img/icons/devLogo.jpg"
 import {PATH} from "../../utils/routes/routes";
 import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 import {useFormik} from "formik";
@@ -48,7 +49,8 @@ export const Login = () => {
             <div className={s.loginBlock}>
 
                 <form onSubmit={formik.handleSubmit} className={s.loginBlock}>
-                    <h3>Вход на сайт</h3>
+                    <h3>Вход</h3>
+                    <img src={devCircleLogo} alt={"dev circle"} className={s.devCircleLogo}/>
 
                     <div className={s.inputBlock}>
                         <input

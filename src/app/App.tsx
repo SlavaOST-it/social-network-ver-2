@@ -29,8 +29,12 @@ function App() {
 
     return (
         <div className={baseClassName}>
-            <Header/>
-            {loggedIn && <NavBar/>}
+
+            {loggedIn &&
+                <>
+                    <Header/>
+                    <NavBar/>
+                </>}
             <Main/>
             <ErrorSnackbar/>
         </div>
