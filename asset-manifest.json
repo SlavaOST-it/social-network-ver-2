@@ -1,15 +1,40 @@
 {
   "files": {
-    "main.css": "/social-network-ver-2/static/css/main.073c9b0a.css",
-    "main.js": "/social-network-ver-2/static/js/main.75479aaa.js",
+    "main.css": "/social-network-ver-2/static/css/main.aed54472.css",
+    "main.js": "/social-network-ver-2/static/js/main.09f1925a.js",
     "static/js/787.6f01e0c0.chunk.js": "/social-network-ver-2/static/js/787.6f01e0c0.chunk.js",
+    "static/media/elonMusk.png": "/social-network-ver-2/static/media/elonMusk.f47f8714f077669b537f.png",
+    "static/media/404.png": "/social-network-ver-2/static/media/404.221348a740ab2825fbb3.png",
+    "static/media/bgForLogin.jpg": "/social-network-ver-2/static/media/bgForLogin.86797223becd8c03a035.jpg",
+    "static/media/userAvaPost.jpg": "/social-network-ver-2/static/media/userAvaPost.58aa14317f1904fcea8c.jpg",
+    "static/media/bg5.jpg": "/social-network-ver-2/static/media/bg5.2cb86ed2ebfddee90a59.jpg",
+    "static/media/reconstruktion.png": "/social-network-ver-2/static/media/reconstruktion.7fa52e2536f730e83014.png",
+    "static/media/userAvatar1.jpg": "/social-network-ver-2/static/media/userAvatar1.439e7b31567b41be2acd.jpg",
+    "static/media/userAvatar2.jpg": "/social-network-ver-2/static/media/userAvatar2.e46e1f2ed8e8033387f5.jpg",
+    "static/media/baseAvatar.jpg": "/social-network-ver-2/static/media/baseAvatar.5cc100f95b621ce4f01b.jpg",
+    "static/media/devLogo.jpg": "/social-network-ver-2/static/media/devLogo.30809a5724f43978e017.jpg",
+    "static/media/settings-gear.svg": "/social-network-ver-2/static/media/settings-gear.1b2762663d39e63ba701652f2d5f7b86.svg",
+    "static/media/pencil.svg": "/social-network-ver-2/static/media/pencil.231c98c208cc404b1f53d982e759725e.svg",
+    "static/media/send-03-svgrepo-com.svg": "/social-network-ver-2/static/media/send-03-svgrepo-com.cb12cf0ee2c1e5d43cfc5714afc6f622.svg",
+    "static/media/users.svg": "/social-network-ver-2/static/media/users.b3407141a4889658087c817c9d778a30.svg",
+    "static/media/down-arrow-svgrepo-com.svg": "/social-network-ver-2/static/media/down-arrow-svgrepo-com.493ab8dcb5e639202b8570924288fc3e.svg",
+    "static/media/chat-svgrepo-com.svg": "/social-network-ver-2/static/media/chat-svgrepo-com.88d568e646b7507fbb144b82cc17be11.svg",
+    "static/media/friend.svg": "/social-network-ver-2/static/media/friend.5ad40e2969efe19cf8cb0eab9c97e180.svg",
     "index.html": "/social-network-ver-2/index.html",
-    "main.073c9b0a.css.map": "/social-network-ver-2/static/css/main.073c9b0a.css.map",
-    "main.75479aaa.js.map": "/social-network-ver-2/static/js/main.75479aaa.js.map",
+    "static/media/profile-circle.svg": "/social-network-ver-2/static/media/profile-circle.d27154b439e4f10011a91238c08c8653.svg",
+    "static/media/check-circle-svgrepo-com.svg": "/social-network-ver-2/static/media/check-circle-svgrepo-com.492ad1c1f4edd222ed97679fdc0ef298.svg",
+    "static/media/check-mark-button-svgrepo-com.svg": "/social-network-ver-2/static/media/check-mark-button-svgrepo-com.fb117a899ed5a7c467eea4c863ca3c1c.svg",
+    "static/media/search-alt-svgrepo-com.svg": "/social-network-ver-2/static/media/search-alt-svgrepo-com.558698112a94778d15e3de562988e73c.svg",
+    "static/media/headphones.svg": "/social-network-ver-2/static/media/headphones.09fcfe75069d8943e5beaa23bf020a69.svg",
+    "static/media/news.svg": "/social-network-ver-2/static/media/news.7a58d0e94cb85a18b0665a9bb0fd11e2.svg",
+    "static/media/cross-mark-button-svgrepo-com.svg": "/social-network-ver-2/static/media/cross-mark-button-svgrepo-com.830049312dbe09efcc7616d8d5b2ddb1.svg",
+    "static/media/messages.svg": "/social-network-ver-2/static/media/messages.268cc15879724a9e75a47db8aabc5469.svg",
+    "main.aed54472.css.map": "/social-network-ver-2/static/css/main.aed54472.css.map",
+    "main.09f1925a.js.map": "/social-network-ver-2/static/js/main.09f1925a.js.map",
     "787.6f01e0c0.chunk.js.map": "/social-network-ver-2/static/js/787.6f01e0c0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.75479aaa.js"
+    "static/css/main.aed54472.css",
+    "static/js/main.09f1925a.js"
   ]
 }
