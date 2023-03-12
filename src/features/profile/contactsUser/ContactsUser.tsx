@@ -62,8 +62,8 @@ export const ContactsUser = () => {
                 {activeBlock === 'contacts' &&
                     <div className={s.contactsItem}>
                         {itemRender.map((el) =>
-                            <div>
-                                <span key={el.title}>{el.title}:</span> <b>{el.link ? el.link : 'нет информации'}</b>
+                            <div key={el.title}>
+                                <span >{el.title}:</span> <b>{el.link ? el.link : 'нет информации'}</b>
                             </div>)
                         }
                     </div>
