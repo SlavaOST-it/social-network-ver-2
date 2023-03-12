@@ -1,18 +1,19 @@
 import React, {useState} from 'react';
 import s from "./ProfilePage.module.scss"
 import {useAppSelector} from "../../utils/hooks/hooks";
-import {AvatarUser} from "./avatar/AvatarUser";
 
 import bgIMG from "../../assets/img/bg5.jpg"
 import checkLogo from "../../assets/img/icons/check-mark-button-svgrepo-com.svg"
 import crossLogo from "../../assets/img/icons/cross-mark-button-svgrepo-com.svg"
 
 import {Posts} from "../posts/Posts";
-import {UserStatus} from "./userStatus/UserStatus";
-import {ContactsUser} from "./contactsUser/ContactsUser";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../utils/routes/routes";
+import {AvatarUser} from "./avatar/AvatarUser";
+import {UserStatus} from "./userStatus/UserStatus";
 import {EditProfile} from "./editProfile/EditProfile";
+import {ContactsUser} from "./contactsUser/ContactsUser";
+
+import {PATH} from "../../utils/routes/routes";
 
 
 export const ProfilePage = () => {
@@ -44,11 +45,11 @@ export const ProfilePage = () => {
 
                     <div className={s.content}>
                         <div className={s.infoProfile}>
+
                             <div className={s.photoBlock}>
                                 <AvatarUser className={s.avatar}/>
-
-
                             </div>
+
                             <div className={s.nameAndStatus}>
                                 <p className={s.userName}>{userData?.fullName}</p>
                                 <UserStatus/>
@@ -63,11 +64,6 @@ export const ProfilePage = () => {
                                         <img src={crossLogo} alt={'check'} className={s.lookingForJobLogo}/>
                                     </>
                                 }</p>
-                            </div>
-
-                            <div>
-
-
                             </div>
                         </div>
 
