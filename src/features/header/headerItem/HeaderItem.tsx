@@ -3,7 +3,7 @@ import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
 import s from "./HeaderItem.module.scss";
 
 import searchLogo from "../../../assets/img/icons/search-alt-svgrepo-com.svg"
-import logOutLogo from "../../../assets/img/icons/navBar/logout.svg"
+import baseAvatar from "../../../assets/img/icons/baseAvatar.jpg"
 
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -14,7 +14,7 @@ import {logOutTC} from "../../../bll/reducers/auth-reducer";
 
 export const HeaderItem = () => {
     const dispatch = useAppDispatch()
-    const userAvatar = useAppSelector(state => state.profile.myAvatar!)
+    const userAvatar = useAppSelector(state => state.profile.myAvatar)
 
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -44,7 +44,7 @@ export const HeaderItem = () => {
                 onClick={onClickHandle}
             >
 
-                <img src={userAvatar} className={s.userAvatar} alt={'user'}/>
+                <img src={userAvatar ? userAvatar : baseAvatar} className={s.userAvatar} alt={'user'}/>
                 <img className={s.arrowDown} src={arrowDown} alt={'arrow menu'}/>
 
             </Button>
