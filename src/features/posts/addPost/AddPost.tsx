@@ -3,9 +3,9 @@ import React, {ChangeEvent, useState} from 'react';
 import s from "./AddPost.module.scss"
 
 import {useAppDispatch} from "../../../utils/hooks/hooks";
+import {AvatarUser} from "../../profile/avatar/AvatarUser";
 import {addPostAC} from "../../../bll/reducers/profile-reducer";
 import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
-import {AvatarUser} from "../../profile/avatar/AvatarUser";
 
 
 export const AddPost = () => {

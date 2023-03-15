@@ -1,26 +1,25 @@
 import React, {useState} from 'react';
+import {Navigate} from "react-router-dom";
+
 import s from "./ProfilePage.module.scss"
-import {useAppSelector} from "../../utils/hooks/hooks";
 
 import bgIMG from "../../assets/img/bg5.jpg"
 import checkLogo from "../../assets/img/icons/check-mark-button-svgrepo-com.svg"
 import crossLogo from "../../assets/img/icons/cross-mark-button-svgrepo-com.svg"
 
 import {Posts} from "../posts/Posts";
-import {Navigate} from "react-router-dom";
 import {AvatarUser} from "./avatar/AvatarUser";
 import {UserStatus} from "./userStatus/UserStatus";
 import {EditProfile} from "./editProfile/EditProfile";
 import {ContactsUser} from "./contactsUser/ContactsUser";
 
 import {PATH} from "../../utils/routes/routes";
+import {useAppSelector} from "../../utils/hooks/hooks";
 
 
 export const ProfilePage = () => {
-
     const myId = useAppSelector(state => state.profile.myId)
     const userData = useAppSelector(state => state.profile.profile)
-
 
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
 
@@ -29,7 +28,6 @@ export const ProfilePage = () => {
     const onActiveModalHandler = () => {
         setIsProfileEditing(true)
     }
-
 
     if (!loggedIn) {
         return <Navigate to={PATH.login}/>
@@ -86,9 +84,7 @@ export const ProfilePage = () => {
                 </>
 
                 : <EditProfile isAEditingProfile={setIsProfileEditing}/>
-
             }
-
         </div>
     );
 };

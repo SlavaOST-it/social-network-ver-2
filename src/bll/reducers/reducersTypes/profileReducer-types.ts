@@ -9,6 +9,7 @@ import {
     setUserProfileAC
 } from "../profile-reducer";
 
+
 // ===== Initial State ===== //
 export type ProfilePageType = {
     profile: UserProfileType | null,
@@ -32,20 +33,20 @@ export type CommentType = {
 }
 
 
-// ===== Action Type ==== //
-type SetUserProfileAT = ReturnType<typeof setUserProfileAC>
+// ===== Action Types ==== //
+type AddPostAT = ReturnType<typeof addPostAC>
+type SetMyIdAT = ReturnType<typeof setMyIdAC>
 type SetOwnerAT = ReturnType<typeof setOwnerAC>
 type SetStatusAT = ReturnType<typeof setStatusAC>
 type SetAvatarAT = ReturnType<typeof setAvatarAC>
-type AddPostAT = ReturnType<typeof addPostAC>
 type AddCommentAT = ReturnType<typeof addCommentAC>
-type SetMyIdAT = ReturnType<typeof setMyIdAC>
+type SetUserProfileAT = ReturnType<typeof setUserProfileAC>
 
 export type ProfileReducerActionTypes =
     SetUserProfileAT
+    | SetMyIdAT
+    | AddPostAT
     | SetOwnerAT
     | SetStatusAT
     | SetAvatarAT
-    | AddPostAT
     | AddCommentAT
-    | SetMyIdAT

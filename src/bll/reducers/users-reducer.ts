@@ -1,11 +1,14 @@
+import {AxiosError} from "axios";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {UsersPageType, UserType} from "./reducersTypes/usersReducer-types";
+
+import {usersAPI} from "../../api/usersAPI";
+
 import {AppThunkType} from "../store/store";
 import {setAppStatusAC} from "./app-reducer";
-import {AppStatus} from "../../common/types/commonTypes";
+import {AppStatus, ResultCode} from "../../common/types/commonTypes";
+import {UsersPageType, UserType} from "./reducersTypes/usersReducer-types";
+
 import {baseErrorHandler} from "../../utils/error-utils/error-utils";
-import {AxiosError} from "axios";
-import {usersAPI} from "../../api/usersAPI";
 
 
 const initialState: UsersPageType = {
@@ -13,8 +16,6 @@ const initialState: UsersPageType = {
     pageSize: 6,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false,          // нужны ли эти свойства?
-    followingDisable: []        // нужны ли эти свойства?
 }
 
 const slice = createSlice({
@@ -56,7 +57,6 @@ export const {setUsersAC, setUsersTotalCountAC, setCurrentPageAC, followAC, unFo
 // ===== ThunkCreators ===== //
 export const getUsersThunkCreator = (isFriend?: boolean): AppThunkType => async (dispatch, getState) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
-
     const {
         currentPage,
         pageSize
@@ -66,7 +66,6 @@ export const getUsersThunkCreator = (isFriend?: boolean): AppThunkType => async 
         const res = await usersAPI.getUsers(currentPage, pageSize, isFriend)
         dispatch(setUsersAC({users: res.data.items}))
         dispatch(setUsersTotalCountAC({totalUsersCount: res.data.totalCount}))
-
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
@@ -79,11 +78,10 @@ export const followTC = (userId: number): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await usersAPI.follow(userId)
-        if (res.data.resultCode === 0) {
+        if (res.data.resultCode === ResultCode.OK) {
             dispatch(followAC({userId}))
             dispatch(getUsersThunkCreator(false))
         }
-
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
@@ -96,11 +94,10 @@ export const unFollowTC = (userId: number): AppThunkType => async (dispatch) => 
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await usersAPI.unfollow(userId)
-        if (res.data.resultCode === 0) {
+        if (res.data.resultCode === ResultCode.OK) {
             dispatch(unFollowAC({userId}))
             dispatch(getUsersThunkCreator(true))
         }
-
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)

@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
+
 import s from "./HeaderItem.module.scss";
 
-import searchLogo from "../../../assets/img/icons/search-alt-svgrepo-com.svg"
 import baseAvatar from "../../../assets/img/icons/baseAvatar.jpg"
+import arrowDown from "../../../assets/img/icons/down-arrow-svgrepo-com.svg"
+import searchLogo from "../../../assets/img/icons/search-alt-svgrepo-com.svg"
 
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import arrowDown from "../../../assets/img/icons/down-arrow-svgrepo-com.svg"
+
 import {logOutTC} from "../../../bll/reducers/auth-reducer";
 
 

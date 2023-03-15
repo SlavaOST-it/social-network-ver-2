@@ -1,11 +1,14 @@
 import React, {FC} from 'react';
+import {NavLink} from "react-router-dom";
+
 import s from "./UserItem.module.scss"
 import basicAvatar from "../../../assets/img/icons/baseAvatar.jpg"
-import {UserType} from "../../../bll/reducers/reducersTypes/usersReducer-types";
-import {NavLink} from "react-router-dom";
-import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
+
 import {getProfileTC} from "../../../bll/reducers/profile-reducer";
+import {UserType} from "../../../bll/reducers/reducersTypes/usersReducer-types";
+
 import {PATH} from "../../../utils/routes/routes";
+import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
 import {commonDisabled} from "../../../utils/disabledOnBoot/disabledOnBoot";
 
 
@@ -13,12 +16,10 @@ type UserItemType = {
     user: UserType
     changeFollowHandler: (userId: number) => void,
     type: 'users' | 'friends'
-    followingDisable: number []
 }
 
-export const UserItem: FC<UserItemType> = ({user, changeFollowHandler, type, followingDisable}) => {
+export const UserItem: FC<UserItemType> = ({user, changeFollowHandler, type}) => {
     const dispatch = useAppDispatch()
-
     const appStatus = useAppSelector(state => state.app.status)
 
     const currentUser = (userId: number) => {

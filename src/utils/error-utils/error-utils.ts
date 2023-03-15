@@ -5,7 +5,7 @@ import {AppStatus} from "../../common/types/commonTypes";
 import {SetAppErrorAT, SetAppStatusAT} from "../../bll/reducers/reducersTypes/appReducer-types";
 
 
-export const baseErrorHandler = (e: Error | AxiosError, dispatch: Dispatch<SetAppErrorAT | SetAppStatusAT>) =>{
+export const baseErrorHandler = (e: Error | AxiosError, dispatch: Dispatch<SetAppErrorAT | SetAppStatusAT>) => {
     const err = e as Error | AxiosError
     if (axios.isAxiosError(err)) {
         const error = err.response?.data
@@ -13,4 +13,5 @@ export const baseErrorHandler = (e: Error | AxiosError, dispatch: Dispatch<SetAp
             : err.message
         dispatch(setAppStatusAC({status: AppStatus.FAILED}))
         dispatch(setAppErrorAC({error: error}))
-    }}
+    }
+}

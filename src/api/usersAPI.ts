@@ -3,7 +3,7 @@ import {FollowResponseType, UsersResponseType} from "./apiConfig/typesAPI/usersA
 
 
 export const usersAPI = {
-    getUsers(currentPage=1, pageSize: number, isFriend?: boolean) {
+    getUsers(currentPage = 1, pageSize: number, isFriend?: boolean) {
         return instance.get<UsersResponseType>(`users?page=${currentPage}&count=${pageSize}&friend=${isFriend}`)
     },
 
@@ -13,9 +13,5 @@ export const usersAPI = {
 
     unfollow(userId: number) {
         return instance.delete<FollowResponseType>(`follow/${userId}`)
-    },
-
-    // getStatusFollowed(userId: number){
-    //     return instance.get(`/follow/${userId}`)
-    // }
+    }
 }

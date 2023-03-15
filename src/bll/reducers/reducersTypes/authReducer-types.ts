@@ -1,4 +1,3 @@
-
 // ===== Initial State ===== //
 import {loggedInAC, setCaptchaUrlAC} from "../auth-reducer";
 
@@ -7,7 +6,7 @@ export type AuthPageType = {
     captchaURL: null | string
 }
 
-// ===== Action Type ==== //
+// ===== Action Types ==== //
 type LoggedInAT = ReturnType<typeof loggedInAC>
 type SetCaptchaUrlAT = ReturnType<typeof setCaptchaUrlAC>
 

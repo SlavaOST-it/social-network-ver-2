@@ -1,11 +1,13 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AppThunkType} from "../store/store";
-import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 import {AxiosError} from "axios";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
 import {authAPI} from "../../api/authAPI";
-import {AppStatus} from "../../common/types/commonTypes";
-import {getProfileTC, setMyIdAC} from "./profile-reducer";
 import {loggedInAC} from "./auth-reducer";
+import {getProfileTC, setMyIdAC} from "./profile-reducer";
+
+import {AppThunkType} from "../store/store";
+import {AppStatus, ResultCode} from "../../common/types/commonTypes";
+import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 
 
 const initialState = {
@@ -41,7 +43,7 @@ export const initializeAppTC = (): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await authAPI.me()
-        if(res.data.resultCode === 0){
+        if (res.data.resultCode === ResultCode.OK) {
             await dispatch(setMyIdAC({myId: res.data.data.id}))
             await dispatch(getProfileTC(res.data.data.id))
             await dispatch(loggedInAC({loggedIn: true}))

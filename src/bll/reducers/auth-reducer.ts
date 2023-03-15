@@ -42,6 +42,7 @@ export const loginTC = (data: LoginRequestType): AppThunkType => async (dispatch
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await authAPI.login(data)
+        debugger
         if (res.data.resultCode === ResultCode.OK) {
             dispatch(initializeAppTC())
             dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))

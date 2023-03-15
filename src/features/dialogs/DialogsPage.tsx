@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import s from "./DialogsPage.module.scss"
-import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
-import {AddNewMessage} from "./addNewMessage/AddNewMessage";
-import chatLogo from "../../assets/img/icons/chat-svgrepo-com.svg"
-import {AddDialog} from "./addDialog/AddDialog";
 import {Navigate} from "react-router-dom";
+
+import s from "./DialogsPage.module.scss"
+import chatLogo from "../../assets/img/icons/chat-svgrepo-com.svg"
+
+import {AddDialog} from "./addDialog/AddDialog";
+import {AddNewMessage} from "./addNewMessage/AddNewMessage";
+
 import {PATH} from "../../utils/routes/routes";
-import {addNewMessageAC, changeSelectedStatusAC, setCurrentDialogIdAC} from "../../bll/reducers/dialogs-reducer";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
+
+import {changeSelectedStatusAC, setCurrentDialogIdAC} from "../../bll/reducers/dialogs-reducer";
 
 
 export const DialogsPage = () => {
@@ -17,9 +21,7 @@ export const DialogsPage = () => {
 
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
 
-
     const [valueDialogId, setValueDialogId] = useState(0)
-
 
     const messagesUser = dialogsData.filter(d => d.dialogId === valueDialogId).map(m => m.messages)
 
@@ -27,7 +29,7 @@ export const DialogsPage = () => {
         dispatch(changeSelectedStatusAC({value: true}))
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(changeSelectedStatusAC({value: false}))
         dispatch(setCurrentDialogIdAC({dialogId: 0}))
     }, [])
@@ -50,7 +52,7 @@ export const DialogsPage = () => {
                 :
                 <>
                     <div className={s.dialogsNav}>
-                        {valueDialogId !==0 &&
+                        {valueDialogId !== 0 &&
                             <button
                                 onClick={addNewDialogHandler}
                                 className={s.addNewChatButton}
@@ -83,12 +85,11 @@ export const DialogsPage = () => {
                         }
 
                         <div className={s.messages}>
-
                             {messagesUser &&
                                 (messagesUser.map(m =>
                                     <>{m.map(item =>
                                         <p key={item.messageId}
-                                            className={item.messageId > 3 ? (`${s.newMessage} ${s.message}`) : s.message}>
+                                           className={item.messageId > 3 ? (`${s.newMessage} ${s.message}`) : s.message}>
                                             {item.text}
                                         </p>
                                     )}

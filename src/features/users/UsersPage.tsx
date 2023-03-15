@@ -1,14 +1,17 @@
 import React, {FC, useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
-import {followTC, getUsersThunkCreator, setCurrentPageAC, unFollowTC} from "../../bll/reducers/users-reducer";
 import {Navigate} from "react-router-dom";
-import {PATH} from "../../utils/routes/routes";
+
 import s from "./UsersPage.module.scss";
+
 import {UserItem} from "./userItem/UserItem";
-import {BasicPagination} from "../../common/components/pagination/BasicPagination";
+import {followTC, getUsersThunkCreator, setCurrentPageAC, unFollowTC} from "../../bll/reducers/users-reducer";
+
 import {AppStatus, UsersPageType} from "../../common/types/commonTypes";
+import {BasicPagination} from "../../common/components/pagination/BasicPagination";
 import {LinearProgress} from "../../common/components/linearProgress/LinearProgress";
 
+import {PATH} from "../../utils/routes/routes";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
 
 
 export const UsersPage: FC<UsersPageType> = ({type}) => {
@@ -18,7 +21,6 @@ export const UsersPage: FC<UsersPageType> = ({type}) => {
     const pageSize = useAppSelector(state => state.users.pageSize)
     const currentPage = useAppSelector(state => state.users.currentPage)
     const totalUsersCount = useAppSelector(state => state.users.totalUsersCount)
-    const followingDisable = useAppSelector(state => state.users.followingDisable)
 
     const appStatus = useAppSelector(state => state.app.status)
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
@@ -28,11 +30,9 @@ export const UsersPage: FC<UsersPageType> = ({type}) => {
         dispatch(setCurrentPageAC({currentPage: 1}))
     }, [type])
 
-
     useEffect(() => {
         dispatch(getUsersThunkCreator(type === 'friends'))
     }, [currentPage, type])
-
 
     const onPageChanges = (currentPage: number) => {
         dispatch(setCurrentPageAC({currentPage}))
@@ -57,7 +57,7 @@ export const UsersPage: FC<UsersPageType> = ({type}) => {
                         user={users}
                         changeFollowHandler={changeFollowHandler}
                         type={type}
-                        followingDisable={followingDisable}/>
+                    />
                 )}
             </div>
 

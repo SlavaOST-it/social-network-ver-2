@@ -7,11 +7,13 @@ import loginClass from "../login/Login.module.scss"
 import {PATH} from "../../utils/routes/routes";
 
 import {Login} from "../login/Login";
+import {UsersPage} from '../users/UsersPage';
 import {ProfilePage} from "../profile/ProfilePage";
 import {DialogsPage} from "../dialogs/DialogsPage";
-import {UsersPage} from '../users/UsersPage';
+
 import {Page404} from "../../common/components/page404/Page404";
 import {PageConstruction} from "../../common/components/pageConstruction/PageConstruction";
+
 import {useAppSelector} from "../../utils/hooks/hooks";
 
 

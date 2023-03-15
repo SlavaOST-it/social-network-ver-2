@@ -1,12 +1,15 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {AppThunkType} from "../store/store";
 import {AxiosError} from "axios";
-import {baseErrorHandler} from "../../utils/error-utils/error-utils";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
 import {profileAPI} from "../../api/profileAPI";
 import {setAppErrorAC, setAppStatusAC} from "./app-reducer";
+
+import {AppThunkType} from "../store/store";
 import {AppStatus, ResultCode} from "../../common/types/commonTypes";
-import {UpdateProfileRequestType, UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
 import {ProfilePageType} from "./reducersTypes/profileReducer-types";
+import {UpdateProfileRequestType, UserProfileType} from "../../api/apiConfig/typesAPI/profileAPI-types";
+
+import {baseErrorHandler} from "../../utils/error-utils/error-utils";
 
 
 const initialState: ProfilePageType = {
@@ -14,8 +17,6 @@ const initialState: ProfilePageType = {
     myId: 0,
     isOwner: false,
     myAvatar: null,
-
-
     status: "",
     posts: [
         {id: 1, message: 'React или Angular? Что вы выберите?', likesCount: 1, comments: []},
@@ -95,34 +96,35 @@ export const {
 // ===== ThunkCreators ===== //
 export const getProfileTC = (userId: number): AppThunkType => async (dispatch, getState) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
-
     const myId = getState().profile.myId
 
     try {
         const res = await profileAPI.getProfile(userId)
-            if (myId === res.data.userId) {
-                dispatch(setAvatarAC({userAvatar: res.data.photos.large}))
-            }
+        if (myId === res.data.userId) {
+            dispatch(setAvatarAC({userAvatar: res.data.photos.large}))
+        }
 
-            dispatch(setUserProfileAC({profile: res.data}))
-            dispatch(getStatusTC(userId))
-            dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
+        dispatch(setUserProfileAC({profile: res.data}))
+        dispatch(getStatusTC(userId))
+        dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
         dispatch(setAppStatusAC({status: AppStatus.FAILED}))
     }
 }
 
+
 export const getStatusTC = (userId: number): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
         const res = await profileAPI.getStatusProfile(userId)
-        dispatch(setStatusAC({status: res.data}))                                      // !!!!!! ВОЗМОЖНО ЗДЕСЬ ПРОБЛЕМА
+        dispatch(setStatusAC({status: res.data}))
         dispatch(setAppStatusAC({status: AppStatus.SUCCEEDED}))
     } catch (e) {
         baseErrorHandler(e as Error | AxiosError, dispatch)
     }
 }
+
 
 export const changeStatusTC = (status: string): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
@@ -144,6 +146,7 @@ export const changeStatusTC = (status: string): AppThunkType => async (dispatch)
     }
 }
 
+
 export const updatePhotoUserTC = (photo: string): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
     try {
@@ -159,9 +162,9 @@ export const updatePhotoUserTC = (photo: string): AppThunkType => async (dispatc
     }
 }
 
+
 export const updateProfileInfoTC = (data: UpdateProfileRequestType): AppThunkType => async (dispatch) => {
     dispatch(setAppStatusAC({status: AppStatus.LOADING}))
-
     try {
         const res = await profileAPI.updateProfileInfo(data)
         if (res.data.resultCode === ResultCode.OK) {

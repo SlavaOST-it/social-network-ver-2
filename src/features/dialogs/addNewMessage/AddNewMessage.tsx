@@ -1,9 +1,10 @@
 import React, {ChangeEvent, FC, useState} from 'react';
 
 import s from "./AddNewMessage.module.scss"
+
 import {useAppDispatch} from "../../../utils/hooks/hooks";
-import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
 import {addNewMessageAC} from "../../../bll/reducers/dialogs-reducer";
+import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
 
 
 type AddNewMessageType = {

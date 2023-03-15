@@ -2,20 +2,17 @@ import React, {ChangeEvent, useState} from 'react';
 
 import s from "./PostItem.module.scss"
 
-import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
-import {AvatarUser} from "../../profile/avatar/AvatarUser";
-import {addCommentAC} from "../../../bll/reducers/profile-reducer";
-import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
-
 import likeLogo from "../../../assets/img/icons/like.png"
 import userFriendLogo from "../../../assets/img/usersBaseAvatar/userAvaPost.jpg"
+
+import {AvatarUser} from "../../profile/avatar/AvatarUser";
+import {addCommentAC} from "../../../bll/reducers/profile-reducer";
+import {useAppDispatch, useAppSelector} from "../../../utils/hooks/hooks";
+import {ButtonSend} from "../../../common/components/buttonSend/ButtonSend";
 
 
 export const PostItem = () => {
     const dispatch = useAppDispatch()
-
-    const myId = useAppSelector(state => state.profile.myId)
-    const userId = useAppSelector(state => state.profile.profile?.userId)
     const postsData = useAppSelector(state => state.profile.posts)
     const userName = useAppSelector(state => state.profile.profile?.fullName)
 
@@ -49,7 +46,6 @@ export const PostItem = () => {
                                 <img src={likeLogo} alt={'like'} className={s.likeLogo}/>
                                 {post.likesCount}
                             </div>
-
                         </div>
 
                         <div className={s.commentBlock}>
@@ -80,7 +76,6 @@ export const PostItem = () => {
                                 <input
                                     data-id={post.id}
                                     key={post.id}
-                                    value={valueComment}
                                     className={s.inputAddComment}
                                     placeholder={"Написать комментарий..."}
                                     onChange={changeTextComment}
@@ -94,8 +89,6 @@ export const PostItem = () => {
                     </>
                 </div>
             )}
-
         </div>
     );
 };
-

@@ -26,10 +26,10 @@ export type MessageType = {
 }
 
 
-// ===== Action Type ==== //
-type AddNewMessageAT = ReturnType<typeof addNewMessageAC>
+// ===== Action Types ==== //
 type AddNewDialogAT = ReturnType<typeof addNewDialogAC>
-type ChangeSelectedStatusAT = ReturnType<typeof changeSelectedStatusAC>
+type AddNewMessageAT = ReturnType<typeof addNewMessageAC>
 type SetCurrentDialogIdAT = ReturnType<typeof setCurrentDialogIdAC>
+type ChangeSelectedStatusAT = ReturnType<typeof changeSelectedStatusAC>
 
 export type DialogsReducerActionTypes = AddNewMessageAT | AddNewDialogAT | ChangeSelectedStatusAT | SetCurrentDialogIdAT

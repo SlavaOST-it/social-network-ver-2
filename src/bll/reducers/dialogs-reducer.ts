@@ -5,6 +5,7 @@ import avatar2 from "../../assets/img/usersBaseAvatar/elonMusk.png"
 import avatar3 from "../../assets/img/usersBaseAvatar/userAvatar1.jpg"
 import avatar4 from "../../assets/img/usersBaseAvatar/userAvatar2.jpg"
 import basicAvatar from "../../assets/img/icons/baseAvatar.jpg"
+
 import {DialogsPageType} from "./reducersTypes/dialogsReducer-types";
 
 

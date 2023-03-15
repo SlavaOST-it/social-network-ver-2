@@ -21,22 +21,20 @@ export type UsersPageType = {
     pageSize: number,
     totalUsersCount: number,
     currentPage: number,
-    isFetching: boolean,
-    followingDisable: number[]
 }
 
 
-// ===== Action Type ==== //
-type SetUsersAT = ReturnType<typeof setUsersAC>
-type SetUsersTotalCountAT = ReturnType<typeof setUsersTotalCountAC>
-type SetCurrentPageAT = ReturnType<typeof setCurrentPageAC>
+// ===== Action Types ==== //
 type  FollowAT = ReturnType<typeof followAC>
 type UnFollowAT = ReturnType<typeof unFollowAC>
+type SetUsersAT = ReturnType<typeof setUsersAC>
+type SetCurrentPageAT = ReturnType<typeof setCurrentPageAC>
+type SetUsersTotalCountAT = ReturnType<typeof setUsersTotalCountAC>
 
 
 export type UsersReducerActionTypes =
     SetUsersAT
-    | SetUsersTotalCountAT
-    | SetCurrentPageAT
     | FollowAT
     | UnFollowAT
+    | SetCurrentPageAT
+    | SetUsersTotalCountAT

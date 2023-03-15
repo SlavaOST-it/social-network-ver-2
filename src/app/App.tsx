@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
+
 import s from "./App.module.scss"
 
 import {initializeAppTC} from '../bll/reducers/app-reducer';
 
-import {Header} from "../features/header/Header";
 import {Main} from "../features/main/Main";
+import {Header} from "../features/header/Header";
 import {NavBar} from "../features/navBar/NavBar";
 
-import {ErrorSnackbar} from "../common/components/errorSnackBar/ErrorSnackbar";
 import {Preloader} from '../common/components/preloader/Preloader';
+import {ErrorSnackbar} from "../common/components/errorSnackBar/ErrorSnackbar";
 
 import {useAppDispatch, useAppSelector} from "../utils/hooks/hooks";
 

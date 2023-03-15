@@ -32,7 +32,7 @@ export const Login = () => {
         validationSchema: Yup.object({
             email: Yup.string().email("Invalid email address").required("Поле Email обязательно"),
             password: Yup.string().required("Поле Password обязательно"),
-            captcha: Yup.string().required("Поле Captcha обязательно"),
+            // captcha: Yup.string().required("Поле Captcha обязательно"),
         }),
 
         onSubmit: (values) => {
@@ -97,18 +97,20 @@ export const Login = () => {
                                     margin="normal"
                                     {...formik.getFieldProps('captcha')}
                                 />
+                                {formik.touched.captcha && formik.errors.captcha &&
+                                    <div style={{color: 'red'}}>{formik.errors.captcha}</div>}
                             </>
                         }
 
+                        <button
+                            type={'submit'}
+                            className={s.btn_login}
+                            disabled={formik.isSubmitting}
+                        >
+                            Войти
+                        </button>
                     </FormGroup>
 
-                    <button
-                        type={'submit'}
-                        className={s.btn_login}
-                        disabled={formik.isSubmitting}
-                    >
-                        Войти
-                    </button>
                 </form>
 
                 <div className={s.description}>
