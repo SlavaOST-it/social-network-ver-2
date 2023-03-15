@@ -19,21 +19,29 @@ import * as Yup from 'yup';
 export const Login = () => {
     const dispatch = useAppDispatch()
     const loggedIn = useAppSelector(state => state.auth.loggedIn)
+    const captchaImg = useAppSelector(state => state.auth.captchaURL)
 
     const formik = useFormik({
         initialValues: {
             email: '',
             password: '',
-            rememberMe: false
+            rememberMe: false,
+            captcha: ""
         },
 
         validationSchema: Yup.object({
             email: Yup.string().email("Invalid email address").required("Поле Email обязательно"),
             password: Yup.string().required("Поле Password обязательно"),
+            captcha: Yup.string().required("Поле Captcha обязательно"),
         }),
 
         onSubmit: (values) => {
-            dispatch(loginTC({email: values.email, password: values.password, rememberMe: values.rememberMe}))
+            dispatch(loginTC({
+                email: values.email,
+                password: values.password,
+                rememberMe: values.rememberMe,
+                captcha: values.captcha
+            }))
             formik.resetForm()
         }
     })
@@ -52,7 +60,9 @@ export const Login = () => {
 
             <div className={s.loginBlock}>
                 <form onSubmit={formik.handleSubmit} className={s.login}>
+
                     <h3>Вход</h3>
+
                     <FormGroup>
                         <TextField
                             label="Email"
@@ -78,6 +88,18 @@ export const Login = () => {
                                                    value={formik.values.rememberMe}/>}
                                 label="Запомнить меня"/>
                         </div>
+
+                        {captchaImg &&
+                            <>
+                                <img src={captchaImg} alt={"captcha"}/>
+                                <TextField
+                                    label="Captcha"
+                                    margin="normal"
+                                    {...formik.getFieldProps('captcha')}
+                                />
+                            </>
+                        }
+
                     </FormGroup>
 
                     <button
