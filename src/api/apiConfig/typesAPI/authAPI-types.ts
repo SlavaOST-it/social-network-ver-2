@@ -30,3 +30,9 @@ export type LoginResponseType = {
     fieldsErrors: string[],
     resultCode: ResultCode
 }
+
+
+// ===== Captcha Types ===== //
+export type CaptchaResponseType = {
+    url: string
+}
