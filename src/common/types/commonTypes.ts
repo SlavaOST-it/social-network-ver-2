@@ -1,5 +1,3 @@
-
-
 export enum AppStatus {
     IDLE = 'idle',
     LOADING = 'loading',
@@ -7,9 +5,10 @@ export enum AppStatus {
     FAILED = 'failed'
 }
 
-export enum ResultCode  {
-    OK =0,
-    FAILED = 1
+export enum ResultCode {
+    OK = 0,
+    FAILED = 1,
+    CAPTCHA = 10
 }
 
 export type UsersPageType = {
