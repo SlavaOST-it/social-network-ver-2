@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/social-network-ver-2/static/css/main.aed54472.css",
-    "main.js": "/social-network-ver-2/static/js/main.09f1925a.js",
+    "main.js": "/social-network-ver-2/static/js/main.a3de5c95.js",
     "static/js/787.6f01e0c0.chunk.js": "/social-network-ver-2/static/js/787.6f01e0c0.chunk.js",
     "static/media/elonMusk.png": "/social-network-ver-2/static/media/elonMusk.f47f8714f077669b537f.png",
     "static/media/404.png": "/social-network-ver-2/static/media/404.221348a740ab2825fbb3.png",
@@ -30,11 +30,11 @@
     "static/media/cross-mark-button-svgrepo-com.svg": "/social-network-ver-2/static/media/cross-mark-button-svgrepo-com.830049312dbe09efcc7616d8d5b2ddb1.svg",
     "static/media/messages.svg": "/social-network-ver-2/static/media/messages.268cc15879724a9e75a47db8aabc5469.svg",
     "main.aed54472.css.map": "/social-network-ver-2/static/css/main.aed54472.css.map",
-    "main.09f1925a.js.map": "/social-network-ver-2/static/js/main.09f1925a.js.map",
+    "main.a3de5c95.js.map": "/social-network-ver-2/static/js/main.a3de5c95.js.map",
     "787.6f01e0c0.chunk.js.map": "/social-network-ver-2/static/js/787.6f01e0c0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.aed54472.css",
-    "static/js/main.09f1925a.js"
+    "static/js/main.a3de5c95.js"
   ]
 }
