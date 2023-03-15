@@ -8,8 +8,8 @@ export type MeResponseType = {
         login: string,
         email: string
     },
-    messages: [],
-    fieldsErrors: [],
+    messages: string[],
+    fieldsErrors: string[],
     resultCode: ResultCode
 }
 
@@ -26,7 +26,7 @@ export type LoginResponseType = {
     data: {
         userId: number
     },
-    messages: [],
-    fieldsErrors: [],
+    messages: string[],
+    fieldsErrors: string[],
     resultCode: ResultCode
 }
