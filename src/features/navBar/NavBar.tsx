@@ -10,6 +10,7 @@ import messagesLogo from "../../assets/img/icons/navBar/messages.svg"
 import musicLogo from "../../assets/img/icons/navBar/headphones.svg"
 import newsLogo from "../../assets/img/icons/navBar/news.svg"
 import settingsLogo from "../../assets/img/icons/navBar/settings-gear.svg"
+import chatLogo from "../../assets/img/icons/navBar/chat.svg"
 
 import {PATH} from "../../utils/routes/routes";
 import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
@@ -24,11 +25,12 @@ export const NavBar = () => {
 
     const menuLinks = [
         {id: 2, path: PATH.dialogs, nameLink: "Сообщения", linkLogo: messagesLogo},
-        {id: 3, path: PATH.friends, nameLink: "Мои друзья", linkLogo: friendsLogo},
-        {id: 4, path: PATH.users, nameLink: "Пользователи", linkLogo: usersLogo},
-        {id: 5, path: PATH.music, nameLink: "Музыка", linkLogo: musicLogo},
-        {id: 6, path: PATH.news, nameLink: "Новости", linkLogo: newsLogo},
-        {id: 7, path: PATH.settings, nameLink: "Настройки", linkLogo: settingsLogo},
+        {id: 3, path: PATH.chat, nameLink: "Чат", linkLogo: chatLogo},
+        {id: 4, path: PATH.friends, nameLink: "Мои друзья", linkLogo: friendsLogo},
+        {id: 5, path: PATH.users, nameLink: "Пользователи", linkLogo: usersLogo},
+        {id: 6, path: PATH.music, nameLink: "Музыка", linkLogo: musicLogo},
+        {id: 7, path: PATH.news, nameLink: "Новости", linkLogo: newsLogo},
+        {id: 8, path: PATH.settings, nameLink: "Настройки", linkLogo: settingsLogo},
     ]
 
     const setMyProfileHandler = (myId: number) => {

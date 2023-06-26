@@ -4,6 +4,7 @@ import thunkMiddleware, {ThunkAction, ThunkDispatch} from 'redux-thunk'
 
 import {appReducer} from "../reducers/app-reducer";
 import {authReducer} from "../reducers/auth-reducer";
+import {chatReducer} from "../reducers/chat-reducer";
 import {usersReducer} from "../reducers/users-reducer";
 import {profileReducer} from "../reducers/profile-reducer";
 import {dialogsReducer} from "../reducers/dialogs-reducer";
@@ -13,19 +14,22 @@ import {AuthReducerActionTypes} from "../reducers/reducersTypes/authReducer-type
 import {UsersReducerActionTypes} from "../reducers/reducersTypes/usersReducer-types";
 import {DialogsReducerActionTypes} from "../reducers/reducersTypes/dialogsReducer-types";
 import {ProfileReducerActionTypes} from "../reducers/reducersTypes/profileReducer-types";
+import {ChatReducerActionTypes} from "../reducers/reducersTypes/chatReducer-types";
 
 
 const rootReducer = combineReducers({
     app: appReducer,
     auth: authReducer,
-    profile: profileReducer,
+    chat: chatReducer,
     users: usersReducer,
+    profile: profileReducer,
     dialogs: dialogsReducer,
 })
 
 type ReduxActionType =
     AppReducerActionTypes
     | AuthReducerActionTypes
+    | ChatReducerActionTypes
     | UsersReducerActionTypes
     | ProfileReducerActionTypes
     | DialogsReducerActionTypes
