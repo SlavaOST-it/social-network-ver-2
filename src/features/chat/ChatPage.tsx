@@ -1,53 +1,58 @@
-import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
-
-import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
-
-import {ButtonSend} from "../../common/components/buttonSend/ButtonSend";
-
-import {getMessagesTC, sendMessageTC} from "../../bll/reducers/chat-reducer";
+import React, {useEffect, useState} from 'react';
+import {ChatMessageType, useChatSocket} from "../../api/chatAPI";
 
 
 export const ChatPage = () => {
-    const dispatch = useAppDispatch()
-    const messagesState = useAppSelector(state => state.chat!.messages)
+    const [textMessage, setTextMessage] = useState("");
+    const [messages, setMessages] = useState<ChatMessageType[]>([]);
+    const chatSocket = useChatSocket();
 
-    const [textMessage, setTextMessage] = useState("")
+    const changeTextPost = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setTextMessage(e.currentTarget.value);
+    };
 
-    const changeTextPost = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        setTextMessage(e.currentTarget.value)
-    }
-
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-        if (e.ctrlKey && e.charCode === 13){
-            sendMessage()
+    const onKeyPressHandler = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        if (e.ctrlKey && e.charCode === 13) {
+            sendMessage();
         }
-    }
+    };
 
     const sendMessage = () => {
-        dispatch(sendMessageTC(textMessage));
-        setTextMessage("")
-    }
+        chatSocket.sendMessage(textMessage);
+        setTextMessage("");
+    };
 
     useEffect(() => {
-        dispatch(getMessagesTC())
-    }, [])
+        chatSocket.connect();
+
+        return () => {
+            chatSocket.disconnect();
+        };
+    }, []);
+
+    useEffect(() => {
+        chatSocket.onMessage((newMessages: ChatMessageType[]) => {
+            setMessages((oldMessages) => [...oldMessages, ...newMessages]);
+        });
+    }, [chatSocket]);
 
     return (
         <div>
             <div>
-                {messagesState.map((el, index) =>
+                {messages.map((el, index) => (
                     <div key={index}>
                         <b>{el.userName}</b>
                         <div>
-                            <img src={el.photo} alt={"avatar"}/>
+                            <img src={el.photo} alt="User avatar"/>
                         </div>
                         <span>{el.message}</span>
-                    </div>)}
+                    </div>
+                ))}
             </div>
 
-            <textarea value={textMessage} onKeyPress={onKeyPressHandler} onChange={changeTextPost}></textarea>
-
-            <ButtonSend callBack={sendMessage}/>
+            <textarea value={textMessage} onKeyPress={onKeyPressHandler} onChange={changeTextPost}/>
+            <button onClick={sendMessage}>Send</button>
         </div>
     );
 };
+
