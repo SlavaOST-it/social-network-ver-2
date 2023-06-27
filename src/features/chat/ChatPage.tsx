@@ -1,9 +1,10 @@
-import React, {KeyboardEvent, ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useEffect, useState} from 'react';
 
 import {useAppDispatch, useAppSelector} from "../../utils/hooks/hooks";
+
 import {ButtonSend} from "../../common/components/buttonSend/ButtonSend";
 
-import {ChatMessageType} from "../../bll/reducers/reducersTypes/chatReducer-types";
+import {getMessagesTC, sendMessageTC} from "../../bll/reducers/chat-reducer";
 
 
 export const ChatPage = () => {
@@ -11,10 +12,6 @@ export const ChatPage = () => {
     const messagesState = useAppSelector(state => state.chat!.messages)
 
     const [textMessage, setTextMessage] = useState("")
-    const [messages, setMessages] = useState<ChatMessageType[]>([])
-    const [socket, setSocket] = useState<WebSocket | null>(null)
-
-
 
     const changeTextPost = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setTextMessage(e.currentTarget.value)
@@ -27,34 +24,29 @@ export const ChatPage = () => {
     }
 
     const sendMessage = () => {
-        socket!.send(textMessage)
+        dispatch(sendMessageTC(textMessage));
         setTextMessage("")
     }
 
     useEffect(() => {
-        const socket = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
-        setSocket(socket)
-
-        socket.onmessage = (event: MessageEvent) => {
-            let messagesFromServer = JSON.parse(event.data)
-            setMessages((actualMessages)=>[...actualMessages, ...messagesFromServer])
-        }
+        dispatch(getMessagesTC())
     }, [])
 
     return (
         <div>
             <div>
-                {messages.map((el, index) =>
+                {messagesState.map((el, index) =>
                     <div key={index}>
                         <b>{el.userName}</b>
                         <div>
-                            <img src={el.photo}/>
+                            <img src={el.photo} alt={"avatar"}/>
                         </div>
                         <span>{el.message}</span>
                     </div>)}
             </div>
 
             <textarea value={textMessage} onKeyPress={onKeyPressHandler} onChange={changeTextPost}></textarea>
+
             <ButtonSend callBack={sendMessage}/>
         </div>
     );
