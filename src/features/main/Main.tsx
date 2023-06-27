@@ -15,6 +15,7 @@ import {Page404} from "../../common/components/page404/Page404";
 import {PageConstruction} from "../../common/components/pageConstruction/PageConstruction";
 
 import {useAppSelector} from "../../utils/hooks/hooks";
+import {ChatPage} from "../chat/ChatPage";
 
 
 export const Main = () => {
@@ -28,6 +29,7 @@ export const Main = () => {
                 <Route path={PATH.login} element={<Login/>}/>
                 <Route path={PATH.profile} element={<ProfilePage/>}/>
                 <Route path={PATH.dialogs} element={<DialogsPage/>}/>
+                <Route path={PATH.chat} element={<ChatPage/>}/>
                 <Route path={PATH.friends} element={<UsersPage type={'friends'}/>}/>
                 <Route path={PATH.users} element={<UsersPage type={'users'}/>}/>
                 <Route path={PATH.music} element={<PageConstruction/>}/>
